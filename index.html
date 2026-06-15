@@ -59,7 +59,7 @@ nav.scrolled{background:rgba(4,3,1,0.96);backdrop-filter:blur(20px);padding:0.9r
 .btn-fire:hover{background:linear-gradient(135deg,var(--gold2),var(--gold));transform:translateY(-3px);box-shadow:0 10px 30px rgba(200,146,42,0.3)}
 .btn-ghost{font-family:'Cinzel',serif;font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;border:1px solid rgba(200,146,42,0.5);color:var(--gold);padding:1rem 2.2rem;text-decoration:none;transition:all 0.35s;display:inline-block;border-radius:3px}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold2);background:rgba(200,146,42,0.05);transform:translateY(-3px)}
-.hero-right{position:relative;z-index:3;display:flex;justify-content:center;align-items:center;padding:5rem 0}
+.hero-right{position:relative;z-index:3;display:flex;justify-content:center;align-items:center;padding:5rem 0;background:#000}
 .bottle-wrap{position:relative;display:flex;justify-content:center;align-items:center}
 .bottle-wrap::before{content:'';position:absolute;width:280px;height:500px;background:radial-gradient(ellipse 60% 80% at 50% 60%,rgba(255,160,30,0.45) 0%,rgba(200,90,10,0.2) 40%,transparent 75%);filter:blur(25px);z-index:1;animation:fireGlow 2.5s ease-in-out infinite;pointer-events:none}
 .bottle-wrap::after{content:'';position:absolute;width:180px;height:300px;background:radial-gradient(ellipse at 50% 70%,rgba(255,200,60,0.3) 0%,transparent 65%);filter:blur(15px);z-index:1;animation:fireGlow 2s ease-in-out infinite 0.5s;pointer-events:none}
@@ -156,7 +156,7 @@ p:last-child{margin-bottom:0}
 /* ── SHOWCASE ── */
 .showcase{background:#0d0a04;padding:9rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:center;max-width:100%;position:relative;overflow:hidden}
 .showcase::before{display:none}
-.show-b{display:flex;justify-content:center;position:relative}
+.show-b{display:flex;justify-content:center;position:relative;background:#000;padding:2rem}
 .show-b img{height:560px;width:auto;object-fit:contain;filter:drop-shadow(0 0 40px rgba(200,146,42,0.5)) drop-shadow(0 0 100px rgba(200,146,42,0.12)) drop-shadow(0 30px 60px rgba(0,0,0,0.95));animation:floatB 5s ease-in-out infinite}
 .show-halo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:350px;height:350px;background:radial-gradient(circle,rgba(200,146,42,0.12),transparent 70%);filter:blur(50px);pointer-events:none;animation:glowP 4s ease-in-out infinite}
 
@@ -435,8 +435,8 @@ body.en .en{display:block}
   </div>
 </div>
 
-<!-- STREET QUOTE 2 -->
-<div class="sq" style="background:#080601"><blockquote class="es">"El que no ha probado un mezcal añejo nunca ha conocido la paciencia."</blockquote><blockquote class="en">"He who hasn't tried an aged mezcal has never known patience."</blockquote><cite>— Sierra Sur, Oaxaca</cite></div>
+
+
 
 <!-- PARALLAX 1 -->
 <div class="pq"><div class="pq-bg" id="pb1" style="background-image:url('https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=1600&q=70')"></div><div class="pq-c"><blockquote class="es">"Para todo mal, mezcal.<br>Para todo bien, también."</blockquote><blockquote class="en">"For all ills, mezcal.<br>For all good things, too."</blockquote><cite>— Dicho oaxaqueño</cite></div></div>
