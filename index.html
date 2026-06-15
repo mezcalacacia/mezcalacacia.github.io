@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACACIA — El Alma del Mezcal Oaxaqueño</title>
+<meta name="description" content="La enciclopedia viva del mezcal oaxaqueño. Historia, magueyes, procesos, sabores y el misticismo del destilado más antiguo de México.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --negro: #0a0805;
+    --obsidiana: #141010;
+    --carbon: #1e1a16;
+    --tierra: #2d2318;
+    --oro: #c8922a;
+    --oro-claro: #e8b84b;
+    --ámbar: #f5d080;
+    --humo: #8a7a65;
+    --niebla: #c4b49a;
+    --crema: #f0e8d8;
+    --verde-maguey: #4a6741;
+    --verde-claro: #7a9e6f;
+    --acacia: #5c7a3e;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--negro);
+    color: var(--crema);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(to bottom, rgba(10,8,5,0.95), transparent);
+    backdrop-filter: blur(4px);
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--oro);
+    letter-spacing: 0.3em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--niebla);
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--oro-claro); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 6rem 2rem 4rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(200,146,42,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(74,103,65,0.12) 0%, transparent 60%),
+      var(--negro);
+  }
+
+  /* Smoke animation */
+  .smoke {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 0;
+    background: linear-gradient(to top, rgba(200,146,42,0.4), transparent);
+    animation: smoke-rise 8s ease-out infinite;
+  }
+
+  .smoke::before, .smoke::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(200,146,42,0.06);
+    animation: smoke-billow 8s ease-out infinite;
+  }
+
+  @keyframes smoke-rise {
+    0% { height: 0; opacity: 0; }
+    10% { opacity: 1; }
+    100% { height: 40vh; opacity: 0; }
+  }
+
+  @keyframes smoke-billow {
+    0% { width: 4px; height: 4px; bottom: 0; left: -2px; }
+    100% { width: 120px; height: 120px; bottom: 60%; left: -60px; }
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    color: var(--oro);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(4rem, 12vw, 10rem);
+    font-weight: 900;
+    line-height: 0.9;
+    color: var(--crema);
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-title span {
+    color: var(--oro);
+    display: block;
+  }
+
+  .hero-subtitle {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--niebla);
+    margin: 1.5rem auto;
+    max-width: 520px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--oro), transparent);
+    margin: 2rem auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-quote {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--humo);
+    max-width: 400px;
+    margin: 0 auto 3rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-zapoteco {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--acacia);
+    letter-spacing: 0.2em;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* SCROLL INDICATOR */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 1;
+    opacity: 0.5;
+    animation: fade-pulse 2s ease-in-out infinite;
+  }
+
+  .scroll-indicator span {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    color: var(--oro);
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--oro), transparent);
+    animation: scroll-line 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-line {
+    0%, 100% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+  }
+
+  @keyframes fade-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-full {
+    max-width: 100%;
+    padding: 6rem 0;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    color: var(--oro);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--tierra);
+    max-width: 80px;
+  }
+
+  h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--crema);
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--oro-claro);
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    color: var(--niebla);
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+  }
+
+  /* HISTORIA TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--oro), var(--tierra), var(--verde-maguey), var(--tierra));
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3.5rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -2.65rem;
+    top: 0.4rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--oro);
+    border: 2px solid var(--negro);
+    box-shadow: 0 0 8px rgba(200,146,42,0.5);
+  }
+
+  .timeline-era {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--oro);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  /* MAGUEYES GRID */
+  .maguey-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .maguey-card {
+    background: var(--obsidiana);
+    border: 1px solid var(--tierra);
+    border-top: 2px solid var(--verde-maguey);
+    padding: 1.75rem;
+    transition: border-color 0.3s, transform 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s;
+  }
+
+  .maguey-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .maguey-card:hover {
+    border-color: var(--oro);
+    transform: translateY(-4px);
+  }
+
+  .maguey-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--oro-claro);
+    margin-bottom: 0.25rem;
+  }
+
+  .maguey-zapoteco {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--acacia);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.75rem;
+  }
+
+  .maguey-años {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--oro);
+    background: rgba(200,146,42,0.1);
+    border: 1px solid rgba(200,146,42,0.2);
+    padding: 0.2rem 0.5rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.15em;
+  }
+
+  .maguey-card p {
+    font-size: 0.9rem;
+    color: var(--humo);
+    margin: 0;
+  }
+
+  /* PROCESOS */
+  .proceso-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--tierra);
+  }
+
+  .proceso-tab {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--humo);
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-color 0.3s;
+    background: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+  }
+
+  .proceso-tab.active {
+    color: var(--oro);
+    border-bottom-color: var(--oro);
+  }
+
+  .proceso-content { display: none; }
+  .proceso-content.active { display: block; }
+
+  .proceso-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .proceso-step {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--tierra);
+    line-height: 1;
+    min-width: 2rem;
+    font-weight: 700;
+  }
+
+  .step-body h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    color: var(--oro-claro);
+    margin-bottom: 0.3rem;
+  }
+
+  .step-body p {
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* SABORES / SENSORIAL */
+  .sabores-wheel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--tierra);
+    margin: 2rem 0;
+    border: 1px solid var(--tierra);
+  }
+
+  .sabor-cell {
+    background: var(--obsidiana);
+    padding: 1.5rem;
+    text-align: center;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .sabor-cell:hover { background: var(--carbon); }
+
+  .sabor-emoji {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .sabor-nombre {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: var(--oro-claro);
+    margin-bottom: 0.4rem;
+  }
+
+  .sabor-desc {
+    font-size: 0.8rem;
+    color: var(--humo);
+    margin: 0;
+  }
+
+  /* DICCIONARIO */
+  .diccionario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .dict-item {
+    background: var(--obsidiana);
+    border-left: 3px solid var(--oro);
+    padding: 1rem 1.25rem;
+    transition: border-color 0.3s;
+  }
+
+  .dict-item:hover { border-left-color: var(--verde-maguey); }
+
+  .dict-term {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    color: var(--oro-claro);
+    margin-bottom: 0.3rem;
+  }
+
+  .dict-def {
+    font-size: 0.85rem;
+    color: var(--humo);
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* QUIZ */
+  .quiz-box {
+    background: var(--obsidiana);
+    border: 1px solid var(--tierra);
+    padding: 2.5rem;
+    margin-top: 2rem;
+  }
+
+  .quiz-question {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    color: var(--crema);
+    margin-bottom: 1.5rem;
+    min-height: 3rem;
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .quiz-option {
+    background: var(--carbon);
+    border: 1px solid var(--tierra);
+    color: var(--niebla);
+    padding: 0.85rem 1.25rem;
+    cursor: pointer;
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    text-align: left;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .quiz-option:hover { border-color: var(--oro); background: var(--tierra); }
+  .quiz-option.correct { border-color: var(--verde-maguey); background: rgba(74,103,65,0.2); color: var(--crema); }
+  .quiz-option.wrong { border-color: #8b3030; background: rgba(139,48,48,0.15); color: var(--humo); }
+
+  .quiz-feedback {
+    font-style: italic;
+    color: var(--oro-claro);
+    font-size: 0.95rem;
+    min-height: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .quiz-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid var(--oro);
+    color: var(--oro);
+    padding: 0.7rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .quiz-btn:hover { background: var(--oro); color: var(--negro); }
+
+  .quiz-score {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--humo);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  /* ACACIA SECTION */
+  .acacia-section {
+    background: linear-gradient(135deg, var(--obsidiana) 0%, var(--tierra) 100%);
+    border-top: 1px solid var(--tierra);
+    border-bottom: 1px solid var(--tierra);
+  }
+
+  .acacia-symbol {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 20px rgba(92,122,62,0.4));
+  }
+
+  .acacia-quote {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--ámbar);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.5;
+  }
+
+  /* BOTTLE SECTION */
+  .bottle-section {
+    text-align: center;
+    padding: 6rem 2rem;
+    background: var(--negro);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bottle-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(200,146,42,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .bottle-visual {
+    width: 120px;
+    height: 280px;
+    margin: 0 auto 2rem;
+    position: relative;
+    filter: drop-shadow(0 0 30px rgba(200,146,42,0.3));
+  }
+
+  .bottle-svg { width: 100%; height: 100%; }
+
+  /* LANG SWITCHER */
+  .lang-switch {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 200;
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--tierra);
+  }
+
+  .lang-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    background: transparent;
+    border: none;
+    color: var(--humo);
+    padding: 0.4rem 0.7rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .lang-btn.active { background: var(--oro); color: var(--negro); }
+
+  /* FOOTER */
+  footer {
+    background: var(--obsidiana);
+    border-top: 1px solid var(--tierra);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--oro);
+    letter-spacing: 0.3em;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--humo);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+
+  .footer-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--humo);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--oro); }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: var(--tierra);
+  }
+
+  /* RITUAL SECTION */
+  .ritual-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--tierra);
+    margin-top: 2.5rem;
+  }
+
+  .ritual-item {
+    background: var(--obsidiana);
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .ritual-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .ritual-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    color: var(--oro-claro);
+    margin-bottom: 0.5rem;
+  }
+
+  .ritual-desc {
+    font-size: 0.82rem;
+    color: var(--humo);
+    margin: 0;
+  }
+
+  /* SEPARATOR */
+  .sep {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 4rem 0;
+  }
+
+  .sep::before, .sep::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--tierra);
+  }
+
+  .sep-symbol {
+    color: var(--oro);
+    font-size: 1rem;
+  }
+
+  /* Reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* LANG CONTENT */
+  .en { display: none; }
+  body.lang-en .es { display: none; }
+  body.lang-en .en { display: block; }
+  body.lang-en .en-inline { display: inline; }
+  body.lang-en .es-inline { display: none; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem; }
+    .nav-links { display: none; }
+    .sabores-wheel { grid-template-columns: repeat(2, 1fr); }
+    .proceso-tabs { flex-wrap: wrap; }
+    .proceso-tab { font-size: 0.55rem; padding: 0.6rem 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LANG SWITCHER -->
+<div class="lang-switch">
+  <button class="lang-btn active" onclick="setLang('es')">ES</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">ACACIA</a>
+  <ul class="nav-links">
+    <li><a href="#historia">Historia</a></li>
+    <li><a href="#magueyes">Magueyes</a></li>
+    <li><a href="#procesos">Procesos</a></li>
+    <li><a href="#sabores">Sabores</a></li>
+    <li><a href="#ritual">Ritual</a></li>
+    <li><a href="#diccionario">Diccionario</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="smoke"></div>
+  
+  <div class="hero-eyebrow es">San Luis Amatlán · Oaxaca · México</div>
+  <div class="hero-eyebrow en" style="display:none">San Luis Amatlán · Oaxaca · Mexico</div>
+  
+  <h1 class="hero-title">ACACIA<span>MEZCAL</span></h1>
+  
+  <div class="hero-subtitle es">Lo incorruptible destilado desde la tierra</div>
+  <div class="hero-subtitle en" style="display:none">The incorruptible, distilled from the earth</div>
+  
+  <div class="hero-divider"></div>
+  
+  <p class="hero-quote es">Antes del tequila. Antes de la colonia. Antes del nombre.<br>Solo existía el fuego, el maguey, y el tiempo.</p>
+  <p class="hero-quote en" style="display:none">Before tequila. Before the colony. Before the name.<br>There was only fire, agave, and time.</p>
+  
+  <div class="hero-zapoteco">Pa ñannu' pabia' nadxieelii</div>
+  
+  <div class="scroll-indicator">
+    <span>Descubre</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- HISTORIA -->
+<section id="historia">
+  <div class="section-label es">01 — Historia</div>
+  <div class="section-label en" style="display:none">01 — History</div>
+  
+  <h2 class="es reveal">El viaje más largo<br>de cualquier bebida en el mundo</h2>
+  <h2 class="en reveal" style="display:none">The longest journey<br>of any drink in the world</h2>
+  
+  <p class="reveal es">El mezcal no nació en una fábrica ni en un laboratorio. Nació en la relación entre un pueblo y una planta que tardaba décadas en madurar. Esta es su historia real — sin romantizaciones falsas, sin omitir lo que duele.</p>
+  <p class="reveal en" style="display:none">Mezcal wasn't born in a factory or a laboratory. It was born from the relationship between a people and a plant that took decades to mature. This is its real story — no false romanticism, nothing omitted.</p>
+
+  <div class="sep"><span class="sep-symbol">◆</span></div>
+
+  <div class="timeline reveal">
+    
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-era">~ 10,000 A.C.</div>
+      <h3>El maguey como alimento sagrado</h3>
+      <p class="es">Mucho antes de la destilación, las civilizaciones mesoamericanas ya conocían el maguey como planta total: alimento, fibra, papel, medicina, construcción. El <em>aguamiel</em> — la savia dulce del corazón — era bebido fresco o fermentado como <strong>pulque</strong>, bebida ritual asociada a Mayahuel, diosa de cuatrocientos pechos que amamantaba al mundo.</p>
+      <p class="en" style="display:none">Long before distillation, Mesoamerican civilizations already knew agave as a total plant: food, fiber, paper, medicine, construction. The <em>aguamiel</em> — the sweet sap from the heart — was drunk fresh or fermented as <strong>pulque</strong>, a ritual drink associated with Mayahuel, the four-hundred-breasted goddess who nursed the world.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-era">~ 400 D.C.</div>
+      <h3>El mezcal ancestral: fuego y piedra</h3>
+      <p class="es">Evidencia arqueológica en Oaxaca, Guerrero y Jalisco muestra hornos de tierra utilizados para cocinar las piñas de maguey. No era destilación todavía — era concentración del azúcar para fermentación. El sabor ahumado que hoy identifica al mezcal viene de esta cocción en hoyo. <em>El fuego ya estaba en la receta 1,600 años antes del primer alambique.</em></p>
+      <p class="en" style="display:none">Archaeological evidence in Oaxaca, Guerrero, and Jalisco shows earth ovens used to cook agave piñas. It wasn't distillation yet — it was sugar concentration for fermentation. The smoky flavor that defines mezcal today comes from this pit-roasting. <em>The fire was already in the recipe 1,600 years before the first still.</em></p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:var(--humo)"></div>
+      <div class="timeline-era">1521 — 1700</div>
+      <h3>La colonia y el alambique</h3>
+      <p class="es">Los españoles traen la destilación. Pero no inventaron el mezcal — encontraron una tradición de cocción y fermentación y le agregaron un paso: el alambique de cobre o barro. Lo que resulta es un híbrido cultural: técnica europea sobre conocimiento milenario indígena. Los frailes lo documentan, la Corona intenta prohibirlo varias veces para proteger el mercado del vino y el aguardiente de caña. <em>Fracasan.</em></p>
+      <p class="en" style="display:none">The Spanish bring distillation. But they didn't invent mezcal — they found a tradition of roasting and fermentation and added one step: the copper or clay still. What results is a cultural hybrid: European technique over millennia of indigenous knowledge. Friars document it, the Crown tries to ban it multiple times to protect wine and cane spirit markets. <em>They fail.</em></p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:var(--humo)"></div>
+      <div class="timeline-era">1700 — 1800</div>
+      <h3>El tequila y el gran desplante</h3>
+      <p class="es">Aquí viene lo que nadie te cuenta en los bares de Ciudad de México: <strong>el tequila es un mezcal</strong>. Técnicamente, legalmente, históricamente. Es el mezcal del Agave tequilana weber, cultivado en Jalisco. Los productores jaliscienses lograron en 1974 la Denominación de Origen exclusiva para "tequila" y, con ello, separarse del término "mezcal" que cargaba connotaciones de bebida rústica, pobre, indígena. Un movimiento de branding del siglo XVIII que duró hasta nuestros días. <em>Le quitaron el apellido.</em></p>
+      <p class="en" style="display:none">Here's what nobody tells you in Mexico City bars: <strong>tequila is a mezcal</strong>. Technically, legally, historically. It's the mezcal of Agave tequilana weber, grown in Jalisco. Jalisco producers secured an exclusive Denomination of Origin for "tequila" in 1974, separating themselves from the term "mezcal" which carried connotations of rustic, poor, indigenous drink. An 18th-century branding move that lasted to our day. <em>They erased the surname.</em></p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:var(--verde-maguey)"></div>
+      <div class="timeline-era">1994 — Hoy</div>
+      <h3>La denominación de origen del mezcal y el renacimiento</h3>
+      <p class="es">En 1994 se establece la Denominación de Origen Mezcal (DOM). Oaxaca, Guerrero, Durango, San Luis Potosí, Zacatecas y otros estados quedan incluidos. Lo que había sido marginado se convierte en objeto de deseo global. El mundo descubre lo que los oaxaqueños sabían desde siempre: que en la complejidad del mezcal artesanal hay algo que ningún proceso industrial puede replicar.</p>
+      <p class="en" style="display:none">In 1994, the Mezcal Denomination of Origin is established. Oaxaca, Guerrero, Durango, San Luis Potosí, Zacatecas and other states are included. What had been marginalized becomes an object of global desire. The world discovers what Oaxacans always knew: that in artisanal mezcal's complexity lies something no industrial process can replicate.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- MAGUEYES -->
+<section id="magueyes" style="background:var(--obsidiana); max-width:100%; padding: 6rem 2rem;">
+<div style="max-width:1100px; margin:0 auto;">
+  <div class="section-label es">02 — Magueyes</div>
+  <div class="section-label en" style="display:none">02 — Agaves</div>
+  
+  <h2 class="es reveal">No hay dos mezcales iguales<br>porque no hay dos suelos iguales</h2>
+  <h2 class="en reveal" style="display:none">No two mezcals are the same<br>because no two soils are the same</h2>
+  
+  <p class="reveal es">Hay más de 30 especies de agave que se usan para producir mezcal. Cada una tiene su tiempo, su territorio, su carácter. El sabor no viene del naranjo que se planta cerca — ese es un mito. Viene del tipo de suelo, su pH, sus minerales, la altitud, el microclima. Un mismo maguey Espadín sembrado a 1,400 metros en el valle produce algo radicalmente distinto al mismo sembrado a 2,100 metros en la sierra sur.</p>
+  <p class="reveal en" style="display:none">There are over 30 agave species used to produce mezcal. Each has its time, its territory, its character. The flavor doesn't come from an orange tree planted nearby — that's a myth. It comes from soil type, pH, minerals, altitude, microclimate. The same Espadín planted at 1,400 meters in the valley produces something radically different from one grown at 2,100 meters in the southern highlands.</p>
+
+  <div class="maguey-grid">
+
+    <div class="maguey-card">
+      <div class="maguey-name">Espadín</div>
+      <div class="maguey-zapoteco">Agave angustifolia</div>
+      <span class="maguey-años">7 — 12 años</span>
+      <p class="es">El más cultivado. La puerta de entrada al mundo del mezcal. Versátil, accesible, pero capaz de gran complejidad en manos de buen maestro mezcalero. Representa ~90% de la producción oaxaqueña.</p>
+      <p class="en" style="display:none">The most cultivated. The gateway to the mezcal world. Versatile, accessible, but capable of great complexity in the hands of a good mezcalero. Represents ~90% of Oaxacan production.</p>
+    </div>
+
+    <div class="maguey-card">
+      <div class="maguey-name">Tobalá</div>
+      <div class="maguey-zapoteco">Agave potatorum</div>
+      <span class="maguey-años">12 — 15 años</span>
+      <p class="es">Silvestre. No se siembra — se encuentra. Crece en las cañadas y laderas de la sierra. Pequeño, con hojas anchas. Su mezcal es floral, frutal, con notas herbales únicas. Alta rareza, baja producción.</p>
+      <p class="en" style="display:none">Wild. Not planted — found. Grows in the ravines and hillsides of the highlands. Small, with wide leaves. Its mezcal is floral, fruity, with unique herbal notes. High rarity, low production.</p>
+    </div>
+
+    <div class="maguey-card">
+      <div class="maguey-name">Tepeztate</div>
+      <div class="maguey-zapoteco">Agave marmorata</div>
+      <span class="maguey-años">25 — 35 años</span>
+      <p class="es">El maguey de la paciencia. Crece en roca, en pendientes imposibles. Su mezcal tarda una generación humana en ser posible. Notas intensas, casi salvajes. Cuando lo bebes, bebes tres décadas de sierra.</p>
+      <p class="en" style="display:none">The agave of patience. Grows on rock, on impossible slopes. Its mezcal takes a human generation to become possible. Intense, almost wild notes. When you drink it, you drink three decades of highland.</p>
+    </div>
+
+    <div class="maguey-card">
+      <div class="maguey-name">Madre Cuishe</div>
+      <div class="maguey-zapoteco">Agave karwinskii</div>
+      <span class="maguey-años">12 — 18 años</span>
+      <p class="es">Alto, columnar, imponente. Puede medir 4 metros. Se encuentra principalmente en los valles centrales de Oaxaca. Mezcal mineral, con notas de tierra mojada, hierbas secas. Terroso en el buen sentido.</p>
+      <p class="en" style="display:none">Tall, columnar, imposing. Can reach 4 meters. Found mainly in Oaxaca's central valleys. Mineral mezcal, with wet earth, dry herb notes. Earthy in the best sense.</p>
+    </div>
+
+    <div class="maguey-card">
+      <div class="maguey-name">Matateco</div>
+      <div class="maguey-zapoteco">Agave seemanniana</div>
+      <span class="maguey-años">10 — 14 años</span>
+      <p class="es">Endémico de la región de Miahuatlán. Aquí se vuelve local: el suelo de la sierra sur — su composición única de minerales y la altura — produce un mezcal con carácter propio que no puedes encontrar en otro lugar del mundo.</p>
+      <p class="en" style="display:none">Endemic to the Miahuatlán region. Here it gets local: the southern highlands soil — its unique mineral composition and altitude — produces a mezcal with its own character you can't find anywhere else in the world.</p>
+    </div>
+
+    <div class="maguey-card">
+      <div class="maguey-name">Arroqueño</div>
+      <div class="maguey-zapoteco">Agave americana var. oaxacensis</div>
+      <span class="maguey-años">20 — 25 años</span>
+      <p class="es">Gigante de los valles centrales. Sus hojas pueden medir 2 metros. Mezcal denso, untuoso, con dulzura natural y notas de fruta madura. Uno de los más apreciados por conocedores internacionales.</p>
+      <p class="en" style="display:none">Giant of the central valleys. Its leaves can measure 2 meters. Dense, unctuous mezcal, with natural sweetness and ripe fruit notes. One of the most prized by international connoisseurs.</p>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- PROCESOS -->
+<section id="procesos">
+  <div class="section-label es">03 — Procesos</div>
+  <div class="section-label en" style="display:none">03 — Processes</div>
+  
+  <h2 class="es reveal">Tres formas de hacer mezcal.<br>Una sola alma.</h2>
+  <h2 class="en reveal" style="display:none">Three ways to make mezcal.<br>One soul.</h2>
+  
+  <p class="reveal es">La NOM-070 clasifica el mezcal en tres categorías según cómo se produce. No son jerarquías de calidad — son categorías de método. Un mezcal industrial bien hecho puede ser bueno. Un mezcal ancestral mal producido puede ser malo. Pero los métodos sí dicen algo sobre la relación entre el productor y la planta.</p>
+  <p class="reveal en" style="display:none">NOM-070 classifies mezcal into three categories by production method. These aren't quality hierarchies — they're method categories. A well-made industrial mezcal can be good. A poorly produced ancestral mezcal can be bad. But methods do say something about the relationship between producer and plant.</p>
+
+  <div class="proceso-tabs reveal">
+    <button class="proceso-tab active" onclick="showProceso('ancestral')">
+      <span class="es">Ancestral</span><span class="en" style="display:none">Ancestral</span>
+    </button>
+    <button class="proceso-tab" onclick="showProceso('artesanal')">
+      <span class="es">Artesanal</span><span class="en" style="display:none">Artisanal</span>
+    </button>
+    <button class="proceso-tab" onclick="showProceso('mezcal')">
+      <span class="es">Mezcal (Industrial)</span><span class="en" style="display:none">Mezcal (Industrial)</span>
+    </button>
+  </div>
+
+  <div id="proc-ancestral" class="proceso-content active">
+    <p class="es" style="font-style:italic; color:var(--oro-claro)">El método más antiguo. Todo a mano. Nada de metal.</p>
+    <p class="en" style="display:none; font-style:italic; color:var(--oro-claro)">The oldest method. All by hand. No metal.</p>
+    <div class="proceso-steps">
+      <div class="proceso-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4 class="es">Cocción en hoyo de tierra</h4>
+          <h4 class="en" style="display:none">Earth pit roasting</h4>
+          <p class="es">Se cava un hoyo circular, se calienta con piedras volcánicas y leña durante 12-24 horas. Las piñas se colocan sobre las piedras y se cubren con tierra, petate y más tierra. Cocinan de 3 a 7 días. El humo no puede escapar — impregna cada fibra del maguey.</p>
+          <p class="en" style="display:none">A circular pit is dug, heated with volcanic rocks and wood for 12-24 hours. The piñas are placed on the stones and covered with earth, petate mat, and more earth. They cook 3-7 days. Smoke cannot escape — it permeates every fiber of the agave.</p>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4 class="es">Molienda con mazo de madera</h4>
+          <h4 class="en" style="display:none">Milling with wooden mallet</h4>
+          <p class="es">Las piñas cocidas se machacan con mazos de madera o con tahona (piedra cilíndrica jalada por mula o caballo). No hay molino eléctrico. El proceso es lento — puede tomar todo un día para una tanda.</p>
+          <p class="en" style="display:none">Cooked piñas are crushed with wooden mallets or a tahona (cylindrical stone pulled by mule or horse). No electric mill. The process is slow — it can take a full day for one batch.</p>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4 class="es">Fermentación en tina de madera o cuero</h4>
+          <h4 class="en" style="display:none">Fermentation in wood or hide vat</h4>
+          <p class="es">Los jugos y fibras se fermentan juntos en recipientes de madera, cuero, o incluso en el suelo excavado. Levaduras silvestres del ambiente — no cepas comerciales. Fermenta de 5 a 30 días dependiendo del clima y la temporada.</p>
+          <p class="en" style="display:none">Juices and fibers ferment together in wood or hide containers, or even in dug earth. Wild environmental yeasts — not commercial strains. Ferments 5-30 days depending on climate and season.</p>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4 class="es">Destilación en olla de barro</h4>
+          <h4 class="en" style="display:none">Distillation in clay pot</h4>
+          <p class="es">Solo en el método ancestral se permite la olla de barro como destilador. El vapor sube, se condensa en un recipiente con agua fría (madera, cobre o incluso un carrizo), y cae como mezcal. El sabor del barro queda en el líquido.</p>
+          <p class="en" style="display:none">Only in the ancestral method is a clay pot allowed as the still. Steam rises, condenses in a cold water vessel (wood, copper, or even reed), and falls as mezcal. The taste of clay stays in the liquid.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="proc-artesanal" class="proceso-content">
+    <p class="es" style="font-style:italic; color:var(--oro-claro)">El más común en Oaxaca. Permite más herramientas, misma esencia.</p>
+    <p class="en" style="display:none; font-style:italic; color:var(--oro-claro)">The most common in Oaxaca. Allows more tools, same essence.</p>
+    <div class="proceso-steps">
+      <div class="proceso-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4 class="es">Cocción en hoyo (igual que ancestral)</h4>
+          <h4 class="en" style="display:none">Pit roasting (same as ancestral)</h4>
+          <p class="es">El proceso de cocción es idéntico al ancestral. El hoyo de tierra, las piedras volcánicas, la leña — esto no cambia. El humo sigue siendo parte integral del mezcal oaxaqueño.</p>
+          <p class="en" style="display:none">The roasting process is identical to ancestral. The earth pit, volcanic stones, firewood — this doesn't change. Smoke remains integral to Oaxacan mezcal.</p>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4 class="es">Molienda con tahona o molino mecánico</h4>
+          <h4 class="en" style="display:none">Milling with tahona or mechanical mill</h4>
+          <p class="es">Se permite el molino mecánico (sin electricidad industrial) además de la tahona. Esto acelera el proceso pero mantiene la fibra en el jugo durante la fermentación.</p>
+          <p class="en" style="display:none">Mechanical mill (non-industrial electric) is permitted alongside tahona. This accelerates the process but maintains fiber in the juice during fermentation.</p>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4 class="es">Fermentación natural con fibras</h4>
+          <h4 class="en" style="display:none">Natural fermentation with fibers</h4>
+          <p class="es">Las fibras del maguey permanecen en la tina de fermentación. Las levaduras silvestres del lugar hacen el trabajo. Este es el factor que más carácter le da al mezcal — la levadura local es única de cada palenque.</p>
+          <p class="en" style="display:none">Agave fibers remain in the fermentation vat. Local wild yeasts do the work. This is the factor that gives mezcal the most character — local yeast is unique to each palenque.</p>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4 class="es">Destilación en cobre o acero</h4>
+          <h4 class="en" style="display:none">Distillation in copper or stainless steel</h4>
+          <p class="es">Alambiques de cobre o acero inoxidable. El proceso es más controlado que el ancestral. Se hacen generalmente dos destilaciones para alcanzar el grado deseado.</p>
+          <p class="en" style="display:none">Copper or stainless steel stills. The process is more controlled than ancestral. Generally two distillations to reach the desired proof.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="proc-mezcal" class="proceso-content">
+    <p class="es" style="font-style:italic; color:var(--humo)">Producción a escala industrial. Diferente en método, no necesariamente en calidad.</p>
+    <p class="en" style="display:none; font-style:italic; color:var(--humo)">Industrial-scale production. Different in method, not necessarily in quality.</p>
+    <div class="proceso-steps">
+      <div class="proceso-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4 class="es">Cocción en autoclaves o difusor</h4>
+          <h4 class="en" style="display:none">Autoclave or diffuser cooking</h4>
+          <p class="es">Las piñas se cuecen al vapor a presión en autoclaves, o se extrae el jugo con difusor sin cocción. Más rápido, más uniforme, menos humo. El perfil de sabor cambia fundamentalmente.</p>
+          <p class="en" style="display:none">Piñas are steam-cooked under pressure in autoclaves, or juice is extracted with a diffuser without cooking. Faster, more uniform, less smoke. The flavor profile changes fundamentally.</p>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4 class="es">Molienda mecánica y extracción</h4>
+          <h4 class="en" style="display:none">Mechanical milling and extraction</h4>
+          <p class="es">Molinos eléctricos industriales. La fibra generalmente se separa del jugo antes de la fermentación, lo que cambia la química del resultado final.</p>
+          <p class="en" style="display:none">Industrial electric mills. Fiber is generally separated from juice before fermentation, changing the final product's chemistry.</p>
+        </div>
+      </div>
+      <div class="proceso-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4 class="es">Fermentación con levaduras comerciales</h4>
+          <h4 class="en" style="display:none">Fermentation with commercial yeasts</h4>
+          <p class="es">Se añaden levaduras comerciales seleccionadas para mayor velocidad y uniformidad. El resultado es consistente lote a lote — lo cual es una virtud o un defecto según para qué lo busques.</p>
+          <p class="en" style="display:none">Selected commercial yeasts are added for greater speed and uniformity. The result is consistent batch to batch — which is a virtue or a flaw depending on what you're looking for.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SABORES -->
+<section id="sabores" style="background:var(--obsidiana); max-width:100%; padding: 6rem 2rem;">
+<div style="max-width:1100px; margin:0 auto;">
+  <div class="section-label es">04 — Sabores</div>
+  <div class="section-label en" style="display:none">04 — Flavors</div>
+  
+  <h2 class="es reveal">Lo que sientes no es magia.<br>Es química que viene de la tierra.</h2>
+  <h2 class="en reveal" style="display:none">What you taste isn't magic.<br>It's chemistry from the soil.</h2>
+  
+  <p class="reveal es">El mezcal produce en el paladar una serie de reacciones que se describen como flores, azufre, frutas o tierra. No es que el maestro mezcalero añada estas cosas — son compuestos volátiles generados durante la fermentación y destilación que dependen del suelo, la levadura silvestre local, y el tipo de maguey. Cada sorbo es un análisis de suelo líquido.</p>
+  <p class="reveal en" style="display:none">Mezcal produces on the palate a series of reactions described as flowers, sulfur, fruits, or earth. The mezcalero doesn't add these things — they're volatile compounds generated during fermentation and distillation that depend on soil, local wild yeast, and agave type. Each sip is a liquid soil analysis.</p>
+
+  <div class="sabores-wheel reveal">
+    <div class="sabor-cell">
+      <span class="sabor-emoji">🌿</span>
+      <div class="sabor-nombre es">Herbáceo</div>
+      <div class="sabor-nombre en" style="display:none">Herbaceous</div>
+      <p class="sabor-desc es">Notas de hierba verde, eucalipto, menta. Comunes en magueyes jóvenes o de tierras húmedas.</p>
+      <p class="sabor-desc en" style="display:none">Notes of green grass, eucalyptus, mint. Common in young agaves or humid soils.</p>
+    </div>
+    <div class="sabor-cell">
+      <span class="sabor-emoji">🌸</span>
+      <div class="sabor-nombre es">Floral</div>
+      <div class="sabor-nombre en" style="display:none">Floral</div>
+      <p class="sabor-desc es">Violetas, jazmín, rosas. Característico del Tobalá y algunos Espadines de alta montaña.</p>
+      <p class="sabor-desc en" style="display:none">Violets, jasmine, roses. Characteristic of Tobalá and some high-altitude Espadines.</p>
+    </div>
+    <div class="sabor-cell">
+      <span class="sabor-emoji">🍑</span>
+      <div class="sabor-nombre es">Frutal</div>
+      <div class="sabor-nombre en" style="display:none">Fruity</div>
+      <p class="sabor-desc es">Durazno, mango verde, fruta tropical. Producto de ésteres generados en la fermentación larga.</p>
+      <p class="sabor-desc en" style="display:none">Peach, green mango, tropical fruit. Product of esters generated in long fermentation.</p>
+    </div>
+    <div class="sabor-cell">
+      <span class="sabor-emoji">🪨</span>
+      <div class="sabor-nombre es">Mineral</div>
+      <div class="sabor-nombre en" style="display:none">Mineral</div>
+      <p class="sabor-desc es">Piedra mojada, ceniza, sal. El suelo hablando directamente. Común en zonas áridas y rocosas.</p>
+      <p class="sabor-desc en" style="display:none">Wet stone, ash, salt. The soil speaking directly. Common in arid and rocky zones.</p>
+    </div>
+    <div class="sabor-cell">
+      <span class="sabor-emoji">🔥</span>
+      <div class="sabor-nombre es">Ahumado</div>
+      <div class="sabor-nombre en" style="display:none">Smoky</div>
+      <p class="sabor-desc es">El sello del mezcal. Viene del hoyo de cocción. Varía según la leña usada — encino, mezquite, roble.</p>
+      <p class="sabor-desc en" style="display:none">The signature of mezcal. Comes from the roasting pit. Varies by wood used — oak, mesquite, live oak.</p>
+    </div>
+    <div class="sabor-cell">
+      <span class="sabor-emoji">🌑</span>
+      <div class="sabor-nombre es">Azufrado</div>
+      <div class="sabor-nombre en" style="display:none">Sulfurous</div>
+      <p class="sabor-desc es">Hule, pólvora, chicharrón. Compuestos de azufre de la fermentación. Polarizante — hay quien lo busca.</p>
+      <p class="sabor-desc en" style="display:none">Rubber, gunpowder, pork rind. Sulfur compounds from fermentation. Polarizing — some seek it out.</p>
+    </div>
+  </div>
+
+  <div class="sep"><span class="sep-symbol">◆</span></div>
+
+  <h3 class="reveal es" style="color:var(--niebla); font-family:'EB Garamond',serif; font-style:italic; font-size:1.2rem; font-weight:400;">Cómo catar mezcal sin pretensiones</h3>
+  <h3 class="reveal en" style="display:none; color:var(--niebla); font-family:'EB Garamond',serif; font-style:italic; font-size:1.2rem; font-weight:400;">How to taste mezcal without pretension</h3>
+  
+  <div class="reveal" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap:1rem; margin-top:1.5rem;">
+    <div style="background:var(--carbon); padding:1.25rem; border-left:2px solid var(--oro);">
+      <p class="es" style="font-size:0.9rem; margin:0;"><strong style="color:var(--oro-claro)">Olfato en seco.</strong> Antes de probarlo, huele la copa con la boca abierta. Los aromas volátiles son la primera pista del suelo y la levadura.</p>
+      <p class="en" style="display:none; font-size:0.9rem; margin:0;"><strong style="color:var(--oro-claro)">Dry nose.</strong> Before tasting, smell the glass with your mouth open. The volatile aromas are the first clue to soil and yeast.</p>
+    </div>
+    <div style="background:var(--carbon); padding:1.25rem; border-left:2px solid var(--oro);">
+      <p class="es" style="font-size:0.9rem; margin:0;"><strong style="color:var(--oro-claro)">El primer trago.</strong> No lo enjuagues rápido. Déjalo en la lengua 3-4 segundos. El mezcal se abre con el calor de la boca.</p>
+      <p class="en" style="display:none; font-size:0.9rem; margin:0;"><strong style="color:var(--oro-claro)">The first sip.</strong> Don't swish it fast. Leave it on your tongue 3-4 seconds. Mezcal opens with the warmth of your mouth.</p>
+    </div>
+    <div style="background:var(--carbon); padding:1.25rem; border-left:2px solid var(--oro);">
+      <p class="es" style="font-size:0.9rem; margin:0;"><strong style="color:var(--oro-claro)">El retrogusto.</strong> Lo más importante. El mezcal bueno tiene un final largo y limpio. Si el ardor desaparece rápido y no deja nada — es industrial.</p>
+      <p class="en" style="display:none; font-size:0.9rem; margin:0;"><strong style="color:var(--oro-claro)">The finish.</strong> Most important. Good mezcal has a long, clean finish. If the burn disappears fast and leaves nothing — it's industrial.</p>
+    </div>
+    <div style="background:var(--carbon); padding:1.25rem; border-left:2px solid var(--oro);">
+      <p class="es" style="font-size:0.9rem; margin:0;"><strong style="color:var(--oro-claro)">Las perlas.</strong> Sacude la copa. Si forman perlas pequeñas y duraderas en el borde — el mezcal tiene buen cuerpo y graduación natural. Truco del maestro mezcalero.</p>
+      <p class="en" style="display:none; font-size:0.9rem; margin:0;"><strong style="color:var(--oro-claro)">The pearls.</strong> Shake the glass. If small, lasting pearls form on the rim — the mezcal has good body and natural proof. The mezcalero's trick.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- RITUAL -->
+<section id="ritual">
+  <div class="section-label es">05 — Ritual</div>
+  <div class="section-label en" style="display:none">05 — Ritual</div>
+  
+  <h2 class="es reveal">El mezcal no se toma.<br>Se celebra.</h2>
+  <h2 class="en reveal" style="display:none">Mezcal isn't just drunk.<br>It's celebrated.</h2>
+  
+  <p class="reveal es">En Oaxaca, el mezcal acompaña prácticamente todos los momentos que importan. No es decoración — es el hilo conductor de la vida social, espiritual y comunitaria. El mezcal en las bodas, en los velorios, en las mayordomías, en las cosechas — no es exceso. Es protocolo.</p>
+  <p class="reveal en" style="display:none">In Oaxaca, mezcal accompanies virtually every moment that matters. It's not decoration — it's the thread running through social, spiritual, and community life. Mezcal at weddings, at wakes, at mayordomías, at harvests — it's not excess. It's protocol.</p>
+
+  <div class="ritual-grid reveal">
+    <div class="ritual-item">
+      <span class="ritual-icon">💒</span>
+      <div class="ritual-name es">Bodas</div>
+      <div class="ritual-name en" style="display:none">Weddings</div>
+      <p class="ritual-desc es">El mezcal se sirve desde el amanecer. Los padrinos de mezcal son figura obligada. La calidad del mezcal refleja el respeto de la familia.</p>
+      <p class="ritual-desc en" style="display:none">Mezcal is served from dawn. Mezcal godparents are a required figure. The mezcal's quality reflects the family's respect.</p>
+    </div>
+    <div class="ritual-item">
+      <span class="ritual-icon">🕯️</span>
+      <div class="ritual-name es">Velorios</div>
+      <div class="ritual-name en" style="display:none">Wakes</div>
+      <p class="ritual-desc es">El mezcal acompaña el duelo. No para olvidar — para recordar. Se sirve sin interrupción durante las noches de vela.</p>
+      <p class="ritual-desc en" style="display:none">Mezcal accompanies grief. Not to forget — to remember. Served without interruption through the nights of vigil.</p>
+    </div>
+    <div class="ritual-item">
+      <span class="ritual-icon">🌽</span>
+      <div class="ritual-name es">Cosechas</div>
+      <div class="ritual-name en" style="display:none">Harvests</div>
+      <p class="ritual-desc es">El primer trago se derrama en la tierra antes de beber. Ofrenda a la tierra que dio el fruto. Práctica que continúa.</p>
+      <p class="ritual-desc en" style="display:none">The first sip is poured on the earth before drinking. An offering to the land that gave the fruit. A continuing practice.</p>
+    </div>
+    <div class="ritual-item">
+      <span class="ritual-icon">🏘️</span>
+      <div class="ritual-name es">Mayordomías</div>
+      <div class="ritual-name en" style="display:none">Mayordomías</div>
+      <p class="ritual-desc es">Sistema de cargos comunitarios donde el mayordomo financia la fiesta del santo patrón. El mezcal es central en la economía y el protocolo.</p>
+      <p class="ritual-desc en" style="display:none">Community cargo system where the mayordomo finances the patron saint celebration. Mezcal is central to the economy and protocol.</p>
+    </div>
+    <div class="ritual-item">
+      <span class="ritual-icon">💀</span>
+      <div class="ritual-name es">Día de Muertos</div>
+      <div class="ritual-name en" style="display:none">Day of the Dead</div>
+      <p class="ritual-desc es">En el altar, el mezcal preferido del difunto. No como decoración — como señal de que el camino de regreso está abierto.</p>
+      <p class="ritual-desc en" style="display:none">On the altar, the departed's preferred mezcal. Not as decoration — as a signal that the path back is open.</p>
+    </div>
+    <div class="ritual-item">
+      <span class="ritual-icon">🤝</span>
+      <div class="ritual-name es">Acuerdos</div>
+      <div class="ritual-name en" style="display:none">Agreements</div>
+      <p class="ritual-desc es">Cualquier acuerdo serio — compra de tierras, compadrazgos, alianzas — se sella con mezcal. La palabra dada sobre mezcal es sagrada.</p>
+      <p class="ritual-desc en" style="display:none">Any serious agreement — land purchase, compadrazgo, alliances — is sealed with mezcal. A word given over mezcal is sacred.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACACIA MISTICISMO -->
+<div class="acacia-section section-full">
+<div class="section-inner">
+  <div class="section-label es" style="justify-content:center;">La Marca</div>
+  <div class="section-label en" style="display:none; justify-content:center;">The Brand</div>
+  
+  <div class="acacia-symbol">🌿</div>
+  
+  <p class="acacia-quote es">"Lo incorruptible dentro de lo corruptible. La esencia que no muere cuando el cuerpo se quema."</p>
+  <p class="acacia-quote en" style="display:none">"The incorruptible within the corruptible. The essence that does not die when the body burns."</p>
+  
+  <p class="reveal es" style="text-align:center; max-width:600px; margin:0 auto 1.5rem; color:var(--humo);">La acacia es madera que no se pudre. En las tradiciones místicas, es el símbolo de lo que el fuego no puede destruir. El maguey muere al florecer — y en ese sacrificio nace el mezcal. La acacia y el agave son el mismo símbolo: muerte que genera vida que no se corrompe.</p>
+  <p class="reveal en" style="display:none; text-align:center; max-width:600px; margin:0 auto 1.5rem; color:var(--humo);">Acacia is wood that doesn't rot. In mystical traditions, it's the symbol of what fire cannot destroy. The agave dies when it flowers — and in that sacrifice, mezcal is born. Acacia and agave are the same symbol: death generating incorruptible life.</p>
+
+  <p style="text-align:center; font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--acacia); letter-spacing:0.3em; margin-top:1rem;">SAN LUIS AMATLÁN · OAXACA · CLASE 33 · NOM-070</p>
+</div>
+</div>
+
+<!-- DICCIONARIO -->
+<section id="diccionario">
+  <div class="section-label es">06 — Diccionario</div>
+  <div class="section-label en" style="display:none">06 — Dictionary</div>
+  
+  <h2 class="es reveal">Hablar mezcal<br>sin perderse en el rollo</h2>
+  <h2 class="en reveal" style="display:none">Speaking mezcal<br>without getting lost in the jargon</h2>
+
+  <div class="diccionario-grid reveal">
+    <div class="dict-item">
+      <div class="dict-term">Palenque</div>
+      <p class="dict-def es">El lugar donde se produce el mezcal. Puede ser desde un rancho de tierra hasta una instalación moderna. El alma del productor vive aquí.</p>
+      <p class="dict-def en" style="display:none">Where mezcal is produced. Can range from an earth ranch to a modern facility. The producer's soul lives here.</p>
+    </div>
+    <div class="dict-item">
+      <div class="dict-term">Maestro Mezcalero</div>
+      <p class="dict-def es">El artesano. Quien sabe leer el maguey, el clima, la fermentación. El conocimiento no está escrito — está en las manos y en el paladar.</p>
+      <p class="dict-def en" style="display:none">The craftsperson. Knows how to read agave, climate, fermentation. The knowledge isn't written — it's in the hands and palate.</p>
+    </div>
+    <div class="dict-item">
+      <div class="dict-term">Piña</div>
+      <p class="dict-def es">El corazón del maguey una vez que se cortan las hojas. Puede pesar desde 10 hasta 500 kilos según la especie. Se llama piña por su parecido visual.</p>
+      <p class="dict-def en" style="display:none">The agave heart once leaves are cut. Can weigh from 10 to 500 kilos depending on species. Called piña for its visual resemblance.</p>
+    </div>
+    <div class="dict-item">
+      <div class="dict-term">Quiote</div>
+      <p class="dict-def es">El tallo floreciente del maguey. Señal de que está listo para morir — y para ser cosechado. Puede crecer hasta 8 metros en semanas.</p>
+      <p class="dict-def en" style="display:none">The agave's flowering stalk. Sign it's ready to die — and to be harvested. Can grow up to 8 meters in weeks.</p>
+    </div>
+    <div class="dict-item">
+      <div class="dict-term">Hijuelo / Mecoate</div>
+      <p class="dict-def es">El brote que sale de la raíz del maguey madre. La forma en que el agave silvestre se reproduce. Se replanta para asegurar continuidad.</p>
+      <p class="dict-def en" style="display:none">The shoot from the mother agave's root. How wild agave reproduces. Replanted to ensure continuity.</p>
+    </div>
+    <div class="dict-item">
+      <div class="dict-term">Ensamble</div>
+      <p class="dict-def es">Mezcal hecho con dos o más tipos de maguey en el mismo lote. Como un blend de whisky pero con terroir propio de cada planta.</p>
+      <p class="dict-def en" style="display:none">Mezcal made with two or more agave types in the same batch. Like a whisky blend but with each plant's own terroir.</p>
+    </div>
+    <div class="dict-item">
+      <div class="dict-term">Pechuga</div>
+      <p class="dict-def es">Mezcal que se destila una tercera vez con frutas, especias y una pechuga de guajolote o pollo colgada en el vapor. Solo en fiestas especiales.</p>
+      <p class="dict-def en" style="display:none">Mezcal distilled a third time with fruits, spices, and a turkey or chicken breast hanging in the steam. Only for special celebrations.</p>
+    </div>
+    <div class="dict-item">
+      <div class="dict-term">Tepache de maguey</div>
+      <p class="dict-def es">El líquido fermentado antes de la destilación. Similar a una cerveza de maguey. Los maestros lo prueban para saber cuándo está listo para destilar.</p>
+      <p class="dict-def en" style="display:none">The fermented liquid before distillation. Similar to an agave beer. Masters taste it to know when it's ready to distill.</p>
+    </div>
+    <div class="dict-item">
+      <div class="dict-term">Salud, amor y pesetas</div>
+      <p class="dict-def es">El brindis clásico. Pero en Oaxaca el verdadero brindis es mirar a los ojos mientras se dice — es un pacto.</p>
+      <p class="dict-def en" style="display:none">The classic toast. But in Oaxaca the real toast is looking in the eyes while saying it — it's a pact.</p>
+    </div>
+    <div class="dict-item">
+      <div class="dict-term">Para todo mal, mezcal</div>
+      <p class="dict-def es">Y para todo bien, también. El refrán más honesto de la cultura oaxaqueña. No necesita explicación.</p>
+      <p class="dict-def en" style="display:none">And for everything good, too. The most honest saying in Oaxacan culture. Needs no explanation.</p>
+    </div>
+    <div class="dict-item">
+      <div class="dict-term">Ya me llevó el quinto</div>
+      <p class="dict-def es">Cuando el mezcal ya hizo su trabajo completo. Quinto destilado = muy fuerte. Origen en las destilaciones de prueba del maestro mezcalero.</p>
+      <p class="dict-def en" style="display:none">When the mezcal has done its full job. Fifth distillate = very strong. Origin in the master mezcalero's test distillations.</p>
+    </div>
+    <div class="dict-item">
+      <div class="dict-term">El mezcal es sabio</div>
+      <p class="dict-def es">Frase que se dice cuando alguien toma de más. El mezcal revela quién eres — no te cambia. Solo te quita el disfraz.</p>
+      <p class="dict-def en" style="display:none">Said when someone drinks too much. Mezcal reveals who you are — it doesn't change you. It just removes the costume.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" style="background:var(--obsidiana); max-width:100%; padding: 6rem 2rem;">
+<div style="max-width:700px; margin:0 auto;">
+  <div class="section-label es">07 — Quiz</div>
+  <div class="section-label en" style="display:none">07 — Quiz</div>
+  
+  <h2 class="es reveal">¿Cuánto sabes<br>de mezcal?</h2>
+  <h2 class="en reveal" style="display:none">How much do you<br>know about mezcal?</h2>
+  
+  <p class="reveal es">10 preguntas. Sin trampa. Lo que no sepas hoy, lo sabrás al terminar.</p>
+  <p class="reveal en" style="display:none">10 questions. No tricks. What you don't know today, you'll know when you finish.</p>
+
+  <div class="quiz-box reveal">
+    <div class="quiz-score" id="quiz-score">Pregunta 1 / 10</div>
+    <div class="quiz-question" id="quiz-q"></div>
+    <div class="quiz-options" id="quiz-opts"></div>
+    <div class="quiz-feedback" id="quiz-fb"></div>
+    <button class="quiz-btn" id="quiz-next" onclick="nextQuestion()" style="display:none">
+      <span class="es">Siguiente →</span><span class="en" style="display:none">Next →</span>
+    </button>
+    <div id="quiz-result" style="display:none; text-align:center;">
+      <div style="font-family:'Cinzel',serif; font-size:2rem; color:var(--oro); margin-bottom:1rem;" id="quiz-final-score"></div>
+      <p id="quiz-final-msg" style="color:var(--niebla);"></p>
+      <button class="quiz-btn" onclick="restartQuiz()" style="margin-top:1.5rem;">
+        <span class="es">Jugar de nuevo</span><span class="en" style="display:none">Play again</span>
+      </button>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">ACACIA</div>
+  <div class="footer-sub es">Mezcal Artesanal · San Luis Amatlán, Oaxaca</div>
+  <div class="footer-sub en" style="display:none">Artisanal Mezcal · San Luis Amatlán, Oaxaca</div>
+  <ul class="footer-links">
+    <li><a href="#historia">Historia</a></li>
+    <li><a href="#magueyes">Magueyes</a></li>
+    <li><a href="#procesos">Procesos</a></li>
+    <li><a href="#diccionario">Diccionario</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+  </ul>
+  <p class="footer-copy es">© 2025 ACACIA MEZCAL · Marca Registrada IMPI #2473000 · Clase 33<br>Para todo mal, mezcal. Para todo bien, también.</p>
+  <p class="footer-copy en" style="display:none">© 2025 ACACIA MEZCAL · Registered Trademark IMPI #2473000 · Class 33<br>For all ills, mezcal. For all good things, too.</p>
+</footer>
+
+<script>
+// LANG SWITCHER
+function setLang(lang) {
+  document.body.className = lang === 'en' ? 'lang-en' : '';
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn:${lang === 'en' ? 'last-child' : 'first-child'}`).classList.add('active');
+  
+  if (lang === 'en') {
+    document.querySelectorAll('.en').forEach(el => el.style.display = '');
+    document.querySelectorAll('.es').forEach(el => el.style.display = 'none');
+  } else {
+    document.querySelectorAll('.es').forEach(el => el.style.display = '');
+    document.querySelectorAll('.en').forEach(el => el.style.display = 'none');
+  }
+}
+
+// PROCESO TABS
+function showProceso(id) {
+  document.querySelectorAll('.proceso-content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.proceso-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('proc-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// INTERSECTION OBSERVER for reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal, .timeline-item, .maguey-card').forEach(el => observer.observe(el));
+
+// QUIZ
+const questions_es = [
+  { q: "¿El tequila es técnicamente un tipo de mezcal?", opts: ["Sí, es mezcal de Agave tequilana", "No, son bebidas completamente diferentes", "Solo si se produce en Oaxaca", "Solo si es 100% agave"], ans: 0, fb: "Correcto. El tequila es mezcal de Agave tequilana weber. Los productores jaliscienses separaron el término en 1974 por razones comerciales." },
+  { q: "¿De dónde viene principalmente el sabor ahumado del mezcal?", opts: ["Del tipo de maguey", "De la cocción de las piñas en hoyo de tierra", "De la destilación en cobre", "Del agua usada en la fermentación"], ans: 1, fb: "El hoyo de tierra con piedras volcánicas es la fuente del ahumado. El vapor no puede escapar y penetra cada fibra del maguey." },
+  { q: "¿Cuántos años puede tardar en madurar un maguey Tepeztate?", opts: ["5 a 8 años", "10 a 15 años", "25 a 35 años", "50 a 60 años"], ans: 2, fb: "El Tepeztate (Agave marmorata) es uno de los más longevos. Crece en roca pura y puede tardar más de 30 años. Cuando lo bebes, bebes décadas." },
+  { q: "¿Qué son las 'perlas' del mezcal?", opts: ["Burbujas que se forman al servir", "Pequeñas esferas que aparecen al agitar la copa y miden el cuerpo", "Impurezas del proceso de destilación", "Cristales de azúcar residual"], ans: 1, fb: "Las perlas son la prueba tradicional del maestro mezcalero. Si son pequeñas y duran, el mezcal tiene buen cuerpo y graduación natural." },
+  { q: "¿Por qué los sabores florales o frutales del mezcal NO vienen de plantar naranjos cerca?", opts: ["Sí vienen de las plantas cercanas", "Vienen de los compuestos del suelo y las levaduras silvestres locales", "Vienen del tipo de leña usada", "Vienen del recipiente de fermentación"], ans: 1, fb: "Este es un mito común. Los aromas son compuestos volátiles generados en la fermentación por levaduras silvestres que reflejan el suelo y el microclima." },
+  { q: "¿Qué es un 'Pechuga'?", opts: ["Mezcal joven sin añejar", "Mezcal destilado una tercera vez con frutas y una pechuga de guajolote", "Mezcal de segunda destilación", "Nombre de un maguey silvestre"], ans: 1, fb: "El Pechuga es uno de los mezcales más especiales. Se destila por tercera vez con frutas de temporada y una pechuga animal colgada en el vapor." },
+  { q: "¿Qué es la Denominación de Origen del Mezcal y cuándo se estableció?", opts: ["En 1921, para celebrar el centenario", "En 1974, junto con la del tequila", "En 1994, incluyendo varios estados productores", "En 2006, con la NOM-070"], ans: 2, fb: "La DOM se estableció en 1994, protegiendo el mezcal de varios estados: Oaxaca, Guerrero, Durango, San Luis Potosí, Zacatecas y otros." },
+  { q: "En la clasificación NOM-070, ¿cuál proceso permite usar olla de barro como destilador?", opts: ["Solo el Industrial", "Solo el Artesanal", "Solo el Ancestral", "Artesanal y Ancestral"], ans: 2, fb: "La olla de barro como destilador es exclusiva del método Ancestral. Es la forma más antigua y produce mezcales con notas minerales únicas del barro." },
+  { q: "¿Qué significa 'Para todo mal, mezcal. Para todo bien, también'?", opts: ["Es publicidad de una marca", "Es el refrán oaxaqueño que reconoce al mezcal como parte central de la vida", "Es una advertencia de salud", "Es un dicho zapoteca prehispánico"], ans: 1, fb: "Es el refrán más honesto de la cultura oaxaqueña. El mezcal acompaña el duelo, la celebración, el acuerdo y el ritual. No es exceso — es protocolo." },
+  { q: "¿Qué es el 'quiote' del maguey?", opts: ["La raíz principal", "El hijo que nace de la raíz madre", "El tallo floreciente que indica que el maguey está listo para morir y cosechar", "El corazón del maguey cocido"], ans: 2, fb: "El quiote es la señal de muerte del maguey — y paradójicamente, la señal de que está listo para dar vida al mezcal. Puede crecer 8 metros en semanas." }
+];
+
+let currentQ = 0, score = 0, answered = false;
+
+function loadQuestion() {
+  const lang = document.body.classList.contains('lang-en') ? 'en' : 'es';
+  const questions = questions_es; // Could add EN version
+  const q = questions[currentQ];
+  
+  document.getElementById('quiz-score').textContent = `Pregunta ${currentQ + 1} / ${questions.length}`;
+  document.getElementById('quiz-q').textContent = q.q;
+  document.getElementById('quiz-fb').textContent = '';
+  document.getElementById('quiz-next').style.display = 'none';
+  answered = false;
+  
+  const optsEl = document.getElementById('quiz-opts');
+  optsEl.innerHTML = '';
+  q.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-option';
+    btn.textContent = opt;
+    btn.onclick = () => selectAnswer(i);
+    optsEl.appendChild(btn);
+  });
+}
+
+function selectAnswer(idx) {
+  if (answered) return;
+  answered = true;
+  const q = questions_es[currentQ];
+  const opts = document.querySelectorAll('.quiz-option');
+  
+  opts[idx].classList.add(idx === q.ans ? 'correct' : 'wrong');
+  if (idx !== q.ans) opts[q.ans].classList.add('correct');
+  
+  if (idx === q.ans) score++;
+  document.getElementById('quiz-fb').textContent = q.fb;
+  document.getElementById('quiz-next').style.display = 'inline-block';
+}
+
+function nextQuestion() {
+  currentQ++;
+  if (currentQ >= questions_es.length) {
+    showResult();
+  } else {
+    loadQuestion();
+  }
+}
+
+function showResult() {
+  document.getElementById('quiz-q').style.display = 'none';
+  document.getElementById('quiz-opts').style.display = 'none';
+  document.getElementById('quiz-fb').style.display = 'none';
+  document.getElementById('quiz-next').style.display = 'none';
+  document.getElementById('quiz-result').style.display = 'block';
+  
+  document.getElementById('quiz-final-score').textContent = `${score} / ${questions_es.length}`;
+  
+  const msgs = [
+    "Apenas empiezas el camino. El mezcal tiene paciencia — regresa.",
+    "Algo sabes. Pero el maguey tardó 30 años. Puedes dedicar más tiempo.",
+    "Buen nivel. Ya puedes hablar en una cata sin avergonzarte.",
+    "Excelente. Eres de los que respetan el mezcal de verdad.",
+    "Maestro Mezcalero honorario. San Luis Amatlán te da la bienvenida."
+  ];
+  
+  const msgIdx = Math.floor((score / questions_es.length) * (msgs.length - 0.01));
+  document.getElementById('quiz-final-msg').textContent = msgs[msgIdx];
+}
+
+function restartQuiz() {
+  currentQ = 0; score = 0;
+  document.getElementById('quiz-q').style.display = '';
+  document.getElementById('quiz-opts').style.display = '';
+  document.getElementById('quiz-fb').style.display = '';
+  document.getElementById('quiz-result').style.display = 'none';
+  loadQuestion();
+}
+
+// Init
+loadQuestion();
+</script>
+</body>
+</html>
