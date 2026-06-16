@@ -36,7 +36,7 @@ nav.scrolled{background:rgba(4,3,1,0.96);backdrop-filter:blur(20px);padding:0.9r
 .burger span{width:28px;height:1px;background:var(--gold);display:block;transition:0.3s}
 
 /* ── SOUND BTN ── */
-#sound-btn{position:fixed;top:50%;right:1.5rem;transform:translateY(-50%);z-index:600;background:rgba(4,3,1,0.95);border:1px solid rgba(200,146,42,0.4);color:var(--smoke);font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.15em;padding:0.45rem 0.9rem;transition:all 0.3s;border-radius:2px;writing-mode:vertical-rl;text-orientation:mixed}
+#sound-btn{position:fixed;top:1.1rem;right:8rem;z-index:600;background:rgba(4,3,1,0.92);border:1px solid rgba(200,146,42,0.4);color:#c8922a;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.15em;padding:0.45rem 0.9rem;transition:all 0.3s;border-radius:2px;backdrop-filter:blur(8px)}
 #sound-btn:hover{border-color:var(--gold2);color:var(--gold2);background:rgba(200,146,42,0.1)}
 #sound-btn.playing{border-color:var(--gold);color:var(--gold);background:rgba(200,146,42,0.12);box-shadow:0 0 10px rgba(200,146,42,0.25)}
 
@@ -45,7 +45,7 @@ nav.scrolled{background:rgba(4,3,1,0.96);backdrop-filter:blur(20px);padding:0.9r
 .hero-fire{position:absolute;inset:0;z-index:0}
 .hero-fire img{width:100%;height:100%;object-fit:cover;filter:brightness(0.08) saturate(2);animation:firePulse 4s ease-in-out infinite}
 .hero-fire::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(4,3,1,0.92) 40%,rgba(4,3,1,0.6) 100%)}
-#embers{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.55}
+#embers{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.6}
 .hero-left{position:relative;z-index:3;padding:10rem 0 5rem}
 .htag{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.55em;color:var(--gold);text-transform:uppercase;margin-bottom:1.8rem;display:flex;align-items:center;gap:1.2rem;animation:slideR 0.8s ease 0.2s both}
 .htag::before{content:'';width:50px;height:1px;background:linear-gradient(to right,transparent,var(--gold))}
@@ -191,7 +191,7 @@ p:last-child{margin-bottom:0}
 .cc p{font-size:0.88rem;color:#a89878;margin:0}
 
 /* ── QUIZ ── */
-.qwrap{background:#0a0700;border:1px solid var(--earth);padding:4rem;margin-top:3rem;max-width:740px;position:relative;overflow:hidden}
+.qwrap{background:#0a0700;border:1px solid #1e1508;padding:2.5rem;margin-top:2rem;max-width:740px;position:relative;overflow:hidden;display:block}
 .qwrap::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent)}
 .qscore{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--smoke);letter-spacing:0.15em;margin-bottom:1.8rem}
 .qq{font-family:'Cinzel',serif;font-size:1.45rem;color:var(--white);margin-bottom:2.2rem;line-height:1.45;min-height:4.5rem}
@@ -280,11 +280,11 @@ body.en .en{display:block}
   *{cursor:auto}
   #cursor,#cursor-ring{display:none}
   nav{padding:0.9rem 1.5rem}
-  .nav-links{display:none;position:fixed;inset:0;background:rgba(4,3,1,0.98);flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;z-index:499}
-  .nav-links.open{display:flex}
+  .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(4,3,1,0.98);flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;z-index:501}
+  .nav-links.open{display:flex!important}
   .nav-links a{font-size:1.1rem;letter-spacing:0.1em}
-  .burger{display:flex}
-  #sound-btn{top:auto;bottom:5rem;right:1rem;writing-mode:horizontal-tb;font-size:0.6rem;padding:0.4rem 0.8rem}
+  .burger{display:flex!important}
+  #sound-btn{top:0.8rem;right:4rem;writing-mode:horizontal-tb;font-size:0.55rem;padding:0.35rem 0.7rem}
   .lang{bottom:1.5rem;right:1rem}
   .hero{grid-template-columns:1fr;padding:0;min-height:100vh;display:flex;flex-direction:column}
   .hero-left{padding:6rem 1.5rem 1rem;order:1;text-align:center}
@@ -402,9 +402,7 @@ body.en .en{display:block}
 <div class="lang"><button class="lb on" onclick="setL('es')">ES</button><button class="lb" onclick="setL('en')">EN</button></div>
 
 <button id="sound-btn" onclick="toggleSound()">🔥 SONIDO</button>
-<audio id="fire-audio" loop preload="none">
-  <source src="https://www.soundjay.com/nature/sounds/fire-1.mp3" type="audio/mpeg">
-</audio>
+<div id="fire-audio-stub"></div>
 
 <nav id="nav">
   <a href="#" class="logo">ACACIA</a>
@@ -422,6 +420,12 @@ body.en .en{display:block}
   <div class="burger" onclick="tN()"><span></span><span></span><span></span></div>
 </nav>
 <canvas id="embers"></canvas>
+
+<!-- FIXED PILLS -->
+<div id="fixed-pills" style="position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;gap:0.8rem;z-index:400">
+  <a href="#top" style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(4,3,1,0.92);border:1px solid rgba(200,146,42,0.4);color:#c8922a;padding:0.5rem 1rem;text-decoration:none;border-radius:20px;backdrop-filter:blur(8px);transition:all 0.3s" onmouseover="this.style.borderColor='#c8922a'" onmouseout="this.style.borderColor='rgba(200,146,42,0.4)'">↑ Inicio</a>
+  <a href="#contacto" style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(200,146,42,0.9);border:1px solid #c8922a;color:#040301;padding:0.5rem 1rem;text-decoration:none;border-radius:20px;transition:all 0.3s">Contacto</a>
+</div>
 
 <!-- HERO -->
 <div class="hero" id="top">
@@ -780,16 +784,44 @@ function tN(){document.getElementById('nl').classList.toggle('open')}
 function cN(){document.getElementById('nl').classList.remove('open')}
 
 // SOUND
-let sPlaying=false;
+let sPlaying=false,audioCtx=null,fireNodes=[];
+function createFire(){
+  if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+  fireNodes=[];
+  for(let i=0;i<4;i++){
+    const buf=audioCtx.createBuffer(1,audioCtx.sampleRate*2,audioCtx.sampleRate);
+    const d=buf.getChannelData(0);
+    for(let j=0;j<d.length;j++)d[j]=(Math.random()*2-1)*0.15;
+    const src=audioCtx.createBufferSource();
+    src.buffer=buf;src.loop=true;
+    const filt=audioCtx.createBiquadFilter();
+    filt.type='bandpass';filt.frequency.value=200+i*120;filt.Q.value=0.8;
+    const gain=audioCtx.createGain();
+    gain.gain.value=0.08+Math.random()*0.06;
+    src.connect(filt);filt.connect(gain);gain.connect(audioCtx.destination);
+    src.start(audioCtx.currentTime+i*0.1);
+    fireNodes.push(src);
+  }
+}
+function stopFire(){fireNodes.forEach(n=>{try{n.stop()}catch(e){}});fireNodes=[]}
 function toggleSound(){
-  const audio=document.getElementById('fire-audio'),btn=document.getElementById('sound-btn');
-  if(sPlaying){audio.pause();btn.textContent='🔥 SONIDO';btn.classList.remove('playing')}
+  const btn=document.getElementById('sound-btn');
+  if(sPlaying){stopFire();btn.innerHTML='🔥 SONIDO';btn.classList.remove('playing')}
+  else{createFire();btn.innerHTML='🔇 SILENCIO';btn.classList.add('playing')}
+  sPlaying=!sPlaying;
+}
   else{audio.play().catch(()=>{});btn.textContent='🔇 SILENCIO';btn.classList.add('playing')}
   sPlaying=!sPlaying;
 }
 
 // LANG
-function setL(l){document.body.className=l==='en'?'en':'';document.querySelectorAll('.lb').forEach((b,i)=>b.classList.toggle('on',(i===0&&l==='es')||(i===1&&l==='en')))}
+function setL(l){
+  document.body.className=l==='en'?'en':'';
+  document.querySelectorAll('.lb').forEach((b,i)=>b.classList.toggle('on',(i===0&&l==='es')||(i===1&&l==='en')));
+  // Force show/hide for all lang elements
+  document.querySelectorAll('.es').forEach(el=>el.style.display=l==='en'?'none':'');
+  document.querySelectorAll('.en').forEach(el=>el.style.display=l==='en'?'block':'none');
+}
 
 // TABS
 function sT(id,btn){document.querySelectorAll('.ppane').forEach(p=>p.classList.remove('on'));document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('on'));document.getElementById('pa-'+id).classList.add('on');btn.classList.add('on')}
@@ -835,7 +867,15 @@ const QS=[
   {q:"¿Qué es el 'quiote' del maguey?",o:["La raíz principal del maguey","El hijuelo que sale de la raíz madre","El tallo floreciente — señal de que el maguey está listo para morir y cosechar","El corazón del maguey ya cocido en el hoyo"],a:2,f:"El quiote es la señal de muerte del maguey — y paradójicamente la señal de que está listo para dar vida al mezcal. Puede crecer 8 metros en semanas. Si se deja florecer, la piña pierde azúcar."}
 ];
 let cQ=0,sc=0,dn=false;
-function ldQ(){const q=QS[cQ];document.getElementById('qs').textContent=`Pregunta ${cQ+1} / ${QS.length}`;document.getElementById('qq').textContent=q.q;document.getElementById('qf').textContent='';document.getElementById('qn').style.display='none';dn=false;const o=document.getElementById('qo');o.innerHTML='';q.o.forEach((op,i)=>{const b=document.createElement('button');b.className='qopt';b.textContent=op;b.onclick=()=>ansQ(i);o.appendChild(b)})}
+function ldQ(){
+  const q=QS[cQ];
+  const qsEl=document.getElementById('qs');
+  const qqEl=document.getElementById('qq');
+  const qfEl=document.getElementById('qf');
+  const qnEl=document.getElementById('qn');
+  const qoEl=document.getElementById('qo');
+  if(!qsEl||!qqEl||!qoEl)return;
+  qsEl.textContent=`Pregunta ${cQ+1} / ${QS.length}`;document.getElementById('qq').textContent=q.q;document.getElementById('qf').textContent='';document.getElementById('qn').style.display='none';dn=false;const o=document.getElementById('qo');o.innerHTML='';q.o.forEach((op,i)=>{const b=document.createElement('button');b.className='qopt';b.textContent=op;b.onclick=()=>ansQ(i);o.appendChild(b)})}
 function ansQ(i){if(dn)return;dn=true;const q=QS[cQ];document.querySelectorAll('.qopt').forEach((b,j)=>{if(j===q.a)b.classList.add('ok');else if(j===i)b.classList.add('no')});if(i===q.a)sc++;document.getElementById('qf').textContent=q.f;document.getElementById('qn').style.display='inline-block'}
 function nxtQ(){if(++cQ>=QS.length){['qq','qo','qf','qn'].forEach(id=>document.getElementById(id).style.display='none');document.getElementById('qr').style.display='block';document.getElementById('qfn').textContent=`${sc} / ${QS.length}`;const m=["Apenas empiezas el camino. El maguey tiene más paciencia que tú.","Algo sabes. Pero el Tepeztate tardó 30 años. Puedes dedicar más tiempo.","Buen nivel. Ya puedes hablar de mezcal en una cata sin avergonzarte.","Excelente. Eres de los que respetan el mezcal de verdad.","Maestro Mezcalero honorario. San Luis Amatlán te espera con un Tepeztate."];document.getElementById('qwm').textContent=m[Math.floor((sc/QS.length)*(m.length-.01))]}else ldQ()}
 function rstQ(){cQ=0;sc=0;['qq','qo','qf','qn'].forEach(id=>document.getElementById(id).style.display='');document.getElementById('qr').style.display='none';ldQ()}
