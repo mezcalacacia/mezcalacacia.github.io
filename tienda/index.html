@@ -31,15 +31,15 @@ nav.menu-open{backdrop-filter:none!important;background:#040301!important}
 .logo:hover{letter-spacing:0.6em}
 .logo-icon{height:32px;width:auto;vertical-align:middle;margin-right:0.55rem;filter:sepia(1) saturate(2.2) hue-rotate(12deg) brightness(1.35);transition:filter 0.4s;position:relative;top:-2px}
 .logo:hover .logo-icon{filter:sepia(1) saturate(3) hue-rotate(12deg) brightness(1.6)}
-.nav-links{display:flex;gap:2.2rem;list-style:none}
-.nav-links a{font-family:'Cinzel',serif;font-size:0.65rem;font-weight:600;color:var(--mist);text-decoration:none;letter-spacing:0.14em;text-transform:uppercase;transition:color 0.3s;position:relative}
-.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s}
-.nav-links a:hover{color:var(--gold2)}.nav-links a:hover::after{width:100%}
-.nav-icon{display:flex;align-items:center;opacity:0.75;transition:opacity 0.25s}
+.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;list-style:none;flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;background:rgba(4,3,1,0.98);z-index:501}
+.nav-links.open{display:flex!important;z-index:502!important;background:#040301!important;backdrop-filter:blur(12px)!important}
+.nav-links a{font-family:'Cinzel',serif;font-size:1.1rem;font-weight:600;color:var(--mist);text-decoration:none;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover{color:var(--gold2)}
+.nav-icon{display:flex;align-items:center;cursor:pointer;opacity:0.75;transition:opacity 0.25s;color:var(--gold);text-decoration:none}
 .nav-icon:hover{opacity:1}
 .lb{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.15em;background:transparent;border:none;color:#7a6a52;padding:0.45rem 0.9rem;transition:all 0.25s;cursor:pointer}
 .lb.on{background:#c8922a;color:#040301}
-.burger{display:none;flex-direction:column;gap:5px;z-index:501}
+.burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;z-index:501;background:none;border:none;padding:4px}
 .burger span{width:28px;height:1px;background:var(--gold);display:block;transition:0.3s}
 #sound-btn{position:fixed;bottom:2.5rem;left:2.5rem;z-index:490;background:rgba(4,3,1,0.85);border:1px solid rgba(200,146,42,0.3);color:#c8922a;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.12em;padding:0.4rem 0.85rem;transition:all 0.3s;border-radius:3px;backdrop-filter:blur(6px)}
 #sound-btn:hover{border-color:var(--gold2);color:var(--gold2);background:rgba(200,146,42,0.1)}
@@ -164,9 +164,6 @@ footer{background:#080601;border-top:1px solid var(--earth);padding:4rem 5rem 2.
 /* ── MOBILE ── */
 @media(max-width:960px){
   nav{padding:0.9rem 1.5rem}
-  .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(4,3,1,0.98);flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;z-index:501}
-  .nav-links.open{display:flex!important;z-index:502!important;background:#040301!important;backdrop-filter:blur(12px)!important}
-  .nav-links a{font-size:1.1rem;letter-spacing:0.1em}
   .burger{display:flex!important}
   #sound-btn{bottom:1.5rem;left:1rem;font-size:0.52rem;padding:0.35rem 0.7rem}
   .lang{bottom:1.5rem;right:1rem}
