@@ -38,6 +38,12 @@ nav.menu-open{backdrop-filter:none!important;background:#040301!important}
 .burger{display:none;flex-direction:column;gap:5px;z-index:501}
 .burger span{width:28px;height:1px;background:var(--gold);display:block;transition:0.3s}
 
+/* ── FIXED STORE ICON ── */
+.fixed-store{position:fixed;top:4.5rem;left:1rem;z-index:400;width:36px;height:36px;border-radius:50%;background:rgba(4,3,1,0.85);border:1px solid rgba(200,146,42,0.35);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.3s;backdrop-filter:blur(6px)}
+.fixed-store svg{width:16px;height:16px;color:#c8922a;transition:color 0.3s}
+.fixed-store:hover{border-color:var(--gold);background:rgba(200,146,42,0.1)}
+.fixed-store:hover svg{color:var(--gold2)}
+
 /* ── SOUND BTN ── */
 #sound-btn{position:fixed;bottom:2.5rem;left:2.5rem;z-index:490;background:rgba(4,3,1,0.85);border:1px solid rgba(200,146,42,0.3);color:#c8922a;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.12em;padding:0.4rem 0.85rem;transition:all 0.3s;border-radius:3px;backdrop-filter:blur(6px)}
 #sound-btn:hover{border-color:var(--gold2);color:var(--gold2);background:rgba(200,146,42,0.1)}
@@ -404,6 +410,15 @@ body.lang-en .es{display:none!important}
 <div class="lang"><button class="lb on" onclick="setL('es')">ES</button><button class="lb" onclick="setL('en')">EN</button></div>
 
 <button id="sound-btn" onclick="toggleSound()">🔥 SONIDO</button>
+
+<!-- Fixed: link to store -->
+<a href="/tienda/" class="fixed-store" title="Tienda · Store" aria-label="Tienda / Store">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+    <line x1="3" y1="6" x2="21" y2="6"/>
+    <path d="M16 10a4 4 0 01-8 0"/>
+  </svg>
+</a>
 <div id="fire-audio-stub"></div>
 
 <nav id="nav">

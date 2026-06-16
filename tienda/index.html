@@ -29,15 +29,15 @@ nav.menu-open{backdrop-filter:none!important;background:#040301!important}
 .nav-logo{font-family:'Cinzel',serif;font-size:1.2rem;font-weight:700;color:var(--gold);letter-spacing:0.45em;text-decoration:none;display:flex;align-items:center;gap:0.5rem;transition:letter-spacing 0.4s}
 .nav-logo:hover{letter-spacing:0.6em}
 .nav-logo img{height:28px;width:auto;filter:sepia(1) saturate(2.2) hue-rotate(12deg) brightness(1.35);position:relative;top:-1px}
-.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
-.nav-links a{font-family:'Cinzel',serif;font-size:0.62rem;font-weight:600;color:var(--mist);text-decoration:none;letter-spacing:0.14em;text-transform:uppercase;transition:color 0.3s;position:relative}
-.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s}
-.nav-links a:hover{color:var(--gold2)}.nav-links a:hover::after{width:100%}
-.nav-right{display:flex;align-items:center;gap:1.5rem}
+.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;list-style:none;flex-direction:column;justify-content:center;align-items:center;gap:2.8rem;z-index:501;background:rgba(4,3,1,0.98)}
+.nav-links.open{display:flex!important;z-index:502!important;background:#040301!important;backdrop-filter:blur(12px)!important}
+.nav-links a{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:600;color:var(--mist);text-decoration:none;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover{color:var(--gold2)}
+.nav-right{display:flex;align-items:center;gap:1.2rem}
 .lang-sw{display:flex;border:1px solid var(--earth);background:#080601}
 .lb{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;background:transparent;border:none;color:#7a6a52;padding:0.38rem 0.75rem;transition:all 0.25s;cursor:pointer}
 .lb.on{background:#c8922a;color:#040301}
-.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:501;background:none;border:none;padding:4px}
+.burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;z-index:503;background:none;border:none;padding:4px}
 .burger span{width:26px;height:1px;background:var(--gold);display:block;transition:0.3s}
 
 /* ── HERO ── */
@@ -159,10 +159,7 @@ footer{background:#080601;border-top:1px solid var(--earth);padding:4rem 5rem 2.
 @media(max-width:960px){
   nav{padding:0.9rem 1.5rem}
   nav.scrolled{padding:0.8rem 1.5rem}
-  .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(4,3,1,0.98);flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;z-index:501}
-  .nav-links.open{display:flex!important;z-index:502!important;background:#040301!important;backdrop-filter:blur(12px)!important}
-  .nav-links a{font-size:1.1rem}
-  .burger{display:flex!important}
+  .nav-links a{font-size:1.15rem}
   .hero{grid-template-columns:1fr;padding:0;min-height:100vh;display:flex;flex-direction:column;gap:0}
   .hero-text{padding:5.5rem 1.5rem 1rem;order:1;text-align:center}
   .hero-store-tag{justify-content:center}
@@ -185,9 +182,23 @@ footer{background:#080601;border-top:1px solid var(--earth);padding:4rem 5rem 2.
   .modal{margin:0.5rem}
   .modal-head,.modal-body{padding:1.5rem}
 }
+
+/* ── FIXED HOME ICON ── */
+.fixed-home{position:fixed;top:4.5rem;left:1rem;z-index:400;width:36px;height:36px;border-radius:50%;background:rgba(4,3,1,0.85);border:1px solid rgba(200,146,42,0.35);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.3s;backdrop-filter:blur(6px)}
+.fixed-home svg{width:16px;height:16px;color:#c8922a;transition:color 0.3s}
+.fixed-home:hover{border-color:var(--gold);background:rgba(200,146,42,0.1)}
+.fixed-home:hover svg{color:var(--gold2)}
 </style>
 </head>
 <body>
+
+<!-- Fixed: back to landing -->
+<a href="/" class="fixed-home" title="Inicio / Home" aria-label="Inicio">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 12l9-9 9 9"/>
+    <path d="M5 10v9a1 1 0 001 1h4v-4h4v4h4a1 1 0 001-1v-9"/>
+  </svg>
+</a>
 
 <!-- ── NAV ─────────────────────────────────────────────────── -->
 <nav id="nav">
@@ -480,37 +491,32 @@ const BOTTLE_SRC = 'data:image/webp;base64,UklGRgKsAABXRUJQVlA4WAoAAAAQAAAA6QAAl
 
 // ── RENDER CARDS ───────────────────────────────────────────────
 function renderCards() {
-  const isEN = document.body.classList.contains('lang-en');
   const grid = document.getElementById('prod-grid');
   grid.innerHTML = '';
   PRODUCTOS.forEach(p => {
     const disp = p.disponibilidad;
-    const badgeClass = disp==='disponible'?'badge-disp':disp==='encargo'?'badge-enc':'badge-ago';
-    const badgeTextES = disp==='disponible'?'Disponible':disp==='encargo'?'Por encargo':'Agotado';
-    const badgeTextEN = disp==='disponible'?'Available':disp==='encargo'?'By order':'Sold out';
-    const nombre = isEN ? p.nombre_en : p.nombre_es;
-    const desc   = isEN ? p.desc_en   : p.desc_es;
+    const bc = disp==='disponible'?'badge-disp':disp==='encargo'?'badge-enc':'badge-ago';
     const btnDis = disp==='agotado' ? 'disabled' : '';
-    const btnTextES = disp==='agotado'?'Agotado':'Solicitar';
-    const btnTextEN = disp==='agotado'?'Sold out':'Request';
-    // TODO: cuando haya precio, mostrar p.precio en lugar de "Consultar"
+    // TODO: agregar campo precio:000 a cada objeto de PRODUCTOS cuando estén definidos
     const priceES = p.precio ? '$'+p.precio+' MXN' : 'Consultar precio';
     const priceEN = p.precio ? '$'+p.precio+' MXN' : 'Inquire';
     grid.innerHTML += `
       <div class="pcard">
         <div class="pcard-img">
-          <img src="${BOTTLE_SRC}" alt="${nombre}" loading="lazy">
+          <img src="${BOTTLE_SRC}" alt="${p.nombre_es}" loading="lazy">
         </div>
-        <span class="pcard-badge ${badgeClass} es">${badgeTextES}</span>
-        <span class="pcard-badge ${badgeClass} en">${badgeTextEN}</span>
-        <div class="pcard-name">${nombre}</div>
+        <span class="pcard-badge ${bc} es">${disp==='disponible'?'Disponible':disp==='encargo'?'Por encargo':'Agotado'}</span>
+        <span class="pcard-badge ${bc} en">${disp==='disponible'?'Available':disp==='encargo'?'By order':'Sold out'}</span>
+        <div class="pcard-name es">${p.nombre_es}</div>
+        <div class="pcard-name en">${p.nombre_en}</div>
         <div class="pcard-sci">${p.maguey}</div>
-        <div class="pcard-desc">${desc}</div>
+        <div class="pcard-desc es">${p.desc_es}</div>
+        <div class="pcard-desc en">${p.desc_en}</div>
         <div class="pcard-price es">${priceES}</div>
         <div class="pcard-price en">${priceEN}</div>
         <button class="btn-req" onclick="openModal(${p.id})" ${btnDis}>
-          <span class="es">${btnTextES}</span>
-          <span class="en">${btnTextEN}</span>
+          <span class="es">${disp==='agotado'?'Agotado':'Solicitar'}</span>
+          <span class="en">${disp==='agotado'?'Sold out':'Request'}</span>
         </button>
       </div>`;
   });
@@ -520,11 +526,10 @@ function renderCards() {
 let currentProduct = null;
 
 function openModal(id) {
-  const isEN = document.body.classList.contains('lang-en');
   currentProduct = PRODUCTOS.find(p => p.id === id);
   if (!currentProduct) return;
-  document.getElementById('modal-prod-name').textContent =
-    isEN ? currentProduct.nombre_en : currentProduct.nombre_es;
+  document.getElementById('modal-prod-name').innerHTML =
+    '<span class="es">'+currentProduct.nombre_es+'</span><span class="en">'+currentProduct.nombre_en+'</span>';
   document.getElementById('modal-msg').className = 'modal-msg';
   document.getElementById('modal-form').reset();
   document.getElementById('m-btn').disabled = false;
@@ -665,7 +670,6 @@ function setL(l) {
   document.querySelectorAll('.lb').forEach((b,i) => {
     b.classList.toggle('on', (i===0&&l==='es')||(i===1&&l==='en'));
   });
-  renderCards(); // re-render cards in new language
 }
 
 // ── INIT ───────────────────────────────────────────────────────
