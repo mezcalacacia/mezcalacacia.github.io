@@ -171,7 +171,7 @@ p:last-child{margin-bottom:0}
 .rcard p{font-size:0.97rem;color:#a89878;margin:0}
 
 /* ── DICCIONARIO ACCORDION ── */
-.dlist{margin-top:2rem;display:flex;flex-direction:column;gap:0;max-width:800px}
+.dlist{display:flex;flex-direction:column;gap:0;max-width:800px;margin:2rem auto 0;width:100%}
 .ditem{border-bottom:1px solid rgba(200,146,42,0.08);overflow:hidden;transition:border-color 0.3s}.ditem:hover{border-bottom-color:rgba(200,146,42,0.2)}
 .dtrig{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0;cursor:pointer;transition:color 0.3s}.dtrig:hover{opacity:1}
 .dtrig:hover .dterm{color:var(--gold2)}
@@ -685,12 +685,6 @@ body.lang-en .es{display:none!important}
 <!-- PARALLAX 3 -->
 <div class="pq"><div class="pq-bg"></div><div class="pq-c"><blockquote class="es">"Hay mezcaleros que jamás han salido de su municipio.<br>Y sus mezcales han dado la vuelta al mundo."</blockquote><blockquote class="en">"There are mezcaleros who have never left their municipality.<br>And their mezcals have gone around the world."</blockquote><cite>— David Suro, sommelier de mezcal</cite></div></div>
 
-  <h2 class="rev es">Glosario</h2>
-  <h2 class="rev en">Glossary</h2>
-  <p class="rev es" style="opacity:0.5;font-size:0.95rem">Términos — haz clic para expandir.</p>
-  <p class="rev en" style="opacity:0.5;font-size:0.95rem">Terms — click to expand.</p>
-  <div class="dlist rev" id="dlist"></div>
-</div>
 
 <!-- QUIZ -->
 <!-- GLOSARIO -->
@@ -797,8 +791,8 @@ document.querySelectorAll('a,button,.qopt,.dtrig,.mcard,.rcard,.fcell').forEach(
 // NAV
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('scrolled',scrollY>60);
-  
-});
+  if(window.innerWidth<=960)document.getElementById('nl').classList.remove('open');
+},{passive:true});
 function tN(){document.getElementById('nl').classList.toggle('open')}
 function cN(){document.getElementById('nl').classList.remove('open')}
 // Close overlay on link click and scroll manually (prevents overlay staying open)
