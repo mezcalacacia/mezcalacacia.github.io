@@ -36,7 +36,7 @@ nav.scrolled{background:rgba(4,3,1,0.96);backdrop-filter:blur(20px);padding:0.9r
 .burger span{width:28px;height:1px;background:var(--gold);display:block;transition:0.3s}
 
 /* ── SOUND BTN ── */
-#sound-btn{position:fixed;bottom:2rem;left:1.5rem;z-index:490;background:rgba(4,3,1,0.92);border:1px solid rgba(200,146,42,0.35);color:#c8922a;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.15em;padding:0.45rem 0.9rem;transition:all 0.3s;border-radius:20px;backdrop-filter:blur(8px)}
+#sound-btn{position:fixed;top:1rem;right:7rem;z-index:490;background:rgba(4,3,1,0.85);border:1px solid rgba(200,146,42,0.3);color:#c8922a;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.12em;padding:0.4rem 0.85rem;transition:all 0.3s;border-radius:3px;backdrop-filter:blur(6px)}
 #sound-btn:hover{border-color:var(--gold2);color:var(--gold2);background:rgba(200,146,42,0.1)}
 #sound-btn.playing{border-color:var(--gold);color:var(--gold);background:rgba(200,146,42,0.12);box-shadow:0 0 10px rgba(200,146,42,0.25)}
 
@@ -45,7 +45,7 @@ nav.scrolled{background:rgba(4,3,1,0.96);backdrop-filter:blur(20px);padding:0.9r
 .hero-fire{position:absolute;inset:0;z-index:0}
 .hero-fire img{width:100%;height:100%;object-fit:cover;filter:brightness(0.08) saturate(2);animation:firePulse 4s ease-in-out infinite}
 .hero-fire::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(4,3,1,0.92) 40%,rgba(4,3,1,0.6) 100%)}
-#embers{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.6}
+#embers{position:fixed;inset:0;z-index:5;pointer-events:none;opacity:0.65}
 .hero-left{position:relative;z-index:3;padding:10rem 0 5rem}
 .htag{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.55em;color:var(--gold);text-transform:uppercase;margin-bottom:1.8rem;display:flex;align-items:center;gap:1.2rem;animation:slideR 0.8s ease 0.2s both}
 .htag::before{content:'';width:50px;height:1px;background:linear-gradient(to right,transparent,var(--gold))}
@@ -281,10 +281,10 @@ body.lang-en .en{display:block}
   #cursor,#cursor-ring{display:none}
   nav{padding:0.9rem 1.5rem}
   .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(4,3,1,0.98);flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;z-index:501}
-  .nav-links.open{display:flex!important}
+  .nav-links.open{display:flex!important;z-index:502!important}
   .nav-links a{font-size:1.1rem;letter-spacing:0.1em}
   .burger{display:flex!important}
-  #sound-btn{bottom:2rem;left:1rem;top:auto;right:auto;font-size:0.55rem;padding:0.4rem 0.8rem}
+  #sound-btn{top:0.8rem;right:4.5rem;font-size:0.52rem;padding:0.35rem 0.7rem}
   .lang{bottom:1.5rem;right:1rem}
   .hero{grid-template-columns:1fr;padding:0;min-height:100vh;display:flex;flex-direction:column}
   .hero-left{padding:6rem 1.5rem 1rem;order:1;text-align:center}
@@ -836,15 +836,15 @@ function toggleSound(){
 
 // LANG
 function setL(l){
-  // Set body class for CSS-driven lang switch
-  document.body.className = l==='en' ? 'lang-en' : '';
-  // Update button states
-  document.querySelectorAll('.lb').forEach(function(b,i){
-    b.classList.toggle('on', (i===0&&l==='es')||(i===1&&l==='en'));
-  });
-  // Clear inline styles set by previous calls
+  // Remove inline styles that might override CSS
   document.querySelectorAll('.es,.en').forEach(function(el){
     el.style.display='';
+  });
+  // Apply class to body - CSS handles the rest
+  document.body.className = (l==='en') ? 'lang-en' : '';
+  // Update button active state
+  document.querySelectorAll('.lb').forEach(function(b,i){
+    b.classList.toggle('on', (i===0 && l==='es') || (i===1 && l==='en'));
   });
 }
 
@@ -917,7 +917,7 @@ function ldQ(){
 function ansQ(i){if(dn)return;dn=true;const q=QS[cQ];document.querySelectorAll('.qopt').forEach((b,j)=>{if(j===q.a)b.classList.add('ok');else if(j===i)b.classList.add('no')});if(i===q.a)sc++;document.getElementById('qf').textContent=q.f;document.getElementById('qn').style.display='inline-block'}
 function nxtQ(){if(++cQ>=QS.length){['qq','qo','qf','qn'].forEach(id=>document.getElementById(id).style.display='none');document.getElementById('qr').style.display='block';document.getElementById('qfn').textContent=`${sc} / ${QS.length}`;const m=["Apenas empiezas el camino. El maguey tiene más paciencia que tú.","Algo sabes. Pero el Tepeztate tardó 30 años. Puedes dedicar más tiempo.","Buen nivel. Ya puedes hablar de mezcal en una cata sin avergonzarte.","Excelente. Eres de los que respetan el mezcal de verdad.","Maestro Mezcalero honorario. San Luis Amatlán te espera con un Tepeztate."];document.getElementById('qwm').textContent=m[Math.floor((sc/QS.length)*(m.length-.01))]}else ldQ()}
 function rstQ(){cQ=0;sc=0;['qq','qo','qf','qn'].forEach(id=>document.getElementById(id).style.display='');document.getElementById('qr').style.display='none';ldQ()}
-window.addEventListener("load",function(){if(document.getElementById("qq"))ldQ();});
+
 
 // Animate quotes when in view
 const sqObs = new IntersectionObserver(entries=>{
@@ -949,6 +949,9 @@ async function sndF(e){
   btn.disabled=false;btn.innerHTML='<span class="es">Enviar</span><span class="en">Send</span>';
 }
 
+// Init quiz
+if(document.getElementById("qq")){ldQ();}else{window.addEventListener("load",function(){ldQ();});}
+
 // Animate quotes on scroll
 const sqObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
@@ -959,7 +962,5 @@ const sqObs=new IntersectionObserver(entries=>{
 document.querySelectorAll('.sq').forEach(el=>sqObs.observe(el));
 </script>
 
-<!-- CONTACT PILL -->
-<a href="#contacto" style="position:fixed;bottom:2rem;right:1.5rem;z-index:490;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;background:rgba(200,146,42,0.95);color:#040301;padding:0.5rem 1.1rem;text-decoration:none;border-radius:20px;box-shadow:0 4px 20px rgba(200,146,42,0.3);white-space:nowrap">Contacto ↓</a>
 </body>
 </html>
