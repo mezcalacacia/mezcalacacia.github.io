@@ -36,7 +36,7 @@ nav.scrolled{background:rgba(4,3,1,0.96);backdrop-filter:blur(20px);padding:0.9r
 .burger span{width:28px;height:1px;background:var(--gold);display:block;transition:0.3s}
 
 /* ── SOUND BTN ── */
-#sound-btn{position:fixed;top:1rem;right:7rem;z-index:490;background:rgba(4,3,1,0.85);border:1px solid rgba(200,146,42,0.3);color:#c8922a;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.12em;padding:0.4rem 0.85rem;transition:all 0.3s;border-radius:3px;backdrop-filter:blur(6px)}
+#sound-btn{position:fixed;bottom:2.5rem;left:2.5rem;z-index:490;background:rgba(4,3,1,0.85);border:1px solid rgba(200,146,42,0.3);color:#c8922a;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.12em;padding:0.4rem 0.85rem;transition:all 0.3s;border-radius:3px;backdrop-filter:blur(6px)}
 #sound-btn:hover{border-color:var(--gold2);color:var(--gold2);background:rgba(200,146,42,0.1)}
 #sound-btn.playing{border-color:var(--gold);color:var(--gold);background:rgba(200,146,42,0.12);box-shadow:0 0 10px rgba(200,146,42,0.25)}
 
@@ -271,9 +271,8 @@ footer{background:#080601;border-top:1px solid var(--earth);padding:6rem 5rem 3r
 @keyframes fadeSlide{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── LANG ── */
-.en{display:none}
-body.lang-en .es{display:none}
-body.lang-en .en{display:block}
+body:not(.lang-en) .en{display:none!important}
+body.lang-en .es{display:none!important}
 
 /* ── MOBILE ── */
 @media(max-width:960px){
@@ -284,7 +283,7 @@ body.lang-en .en{display:block}
   .nav-links.open{display:flex!important;z-index:502!important}
   .nav-links a{font-size:1.1rem;letter-spacing:0.1em}
   .burger{display:flex!important}
-  #sound-btn{top:0.8rem;right:4.5rem;font-size:0.52rem;padding:0.35rem 0.7rem}
+  #sound-btn{bottom:1.5rem;left:1rem;font-size:0.52rem;padding:0.35rem 0.7rem}
   .lang{bottom:1.5rem;right:1rem}
   .hero{grid-template-columns:1fr;padding:0;min-height:100vh;display:flex;flex-direction:column}
   .hero-left{padding:6rem 1.5rem 1rem;order:1;text-align:center}
@@ -294,7 +293,7 @@ body.lang-en .en{display:block}
   .hzap{text-align:center}
   .hctas{justify-content:center}
   .scroll-hint{display:none}
-  .hero-right{order:2;padding:0 1.5rem 3rem;display:flex;justify-content:center}
+  .hero-right{order:2;padding:0 1.5rem 3rem;display:flex;justify-content:center;background:transparent}
   .maguey-wrap{height:auto}
   .maguey-img{height:320px}
   .maguey-wrap::before{width:320px;height:280px}
@@ -502,6 +501,9 @@ body.lang-en .en{display:block}
   </div>
 </div>
 
+<!-- STREET QUOTE 2 -->
+<div class="sq"><blockquote class="es">"El mezcal es la única bebida que se destila con el alma del que lo hace."</blockquote><blockquote class="en">"Mezcal is the only spirit distilled with the soul of the one who makes it."</blockquote><cite>— Maestro Mezcalero</cite></div>
+
 <!-- HISTORIA -->
 <div class="sec" id="historia">
   <div class="eyebrow es">01 — Historia</div><div class="eyebrow en">01 — History</div>
@@ -556,6 +558,9 @@ body.lang-en .en{display:block}
   </div>
 </div></div>
 
+
+<!-- STREET QUOTE 3 -->
+<div class="sq"><blockquote class="es">"Sin maguey no hay mezcal. Sin mezcal no hay memoria."</blockquote><blockquote class="en">"No agave, no mezcal. No mezcal, no memory."</blockquote><cite>— Dicho oaxaqueño</cite></div>
 
 <!-- PROCESOS -->
 <div class="sec" id="procesos">
@@ -654,6 +659,9 @@ body.lang-en .en{display:block}
   </div>
 </div>
 
+<!-- STREET QUOTE 6 -->
+<div class="sq"><blockquote class="es">"La copa de barro no es un vaso. Es un altar portátil."</blockquote><blockquote class="en">"The clay cup is not a glass. It is a portable altar."</blockquote><cite>— Palenque, San Luis Amatlán</cite></div>
+
 <!-- ESPECIALES / CURADOS -->
 <div class="sec-dark" style="background:#080601" id="especiales"><div class="sec-dark-in">
   <div class="eyebrow es">Especiales & Curados</div><div class="eyebrow en">Special & Cured Mezcals</div>
@@ -683,13 +691,16 @@ body.lang-en .en{display:block}
 
 <!-- QUIZ -->
 <!-- GLOSARIO -->
-<div class="sec" id="diccionario" style="background:#040301;padding:5rem 4rem">
+<div class="sec" id="diccionario">
   <div class="eyebrow es">Glosario</div>
   <div class="eyebrow en">Glossary</div>
   <p style="font-size:0.9rem;color:#7a6a52;margin-bottom:1.5rem" class="es">Toca cada término para expandirlo</p>
   <p style="font-size:0.9rem;color:#7a6a52;margin-bottom:1.5rem" class="en">Tap each term to expand</p>
   <div class="dlist" id="dlist"></div>
 </div>
+
+<!-- STREET QUOTE 7 -->
+<div class="sq"><blockquote class="es">"El mezcal no se aprende en un libro. Se aprende en un palenque."</blockquote><blockquote class="en">"Mezcal is not learned from a book. It is learned at a palenque."</blockquote><cite>— Sierra Sur, Oaxaca</cite></div>
 
 <div class="sec-dark" style="background:#080601" id="quiz"><div class="sec-dark-in">
   <div class="eyebrow es">07 — Quiz</div><div class="eyebrow en">07 — Quiz</div>
@@ -830,9 +841,6 @@ function toggleSound(){
   else{createFire();btn.innerHTML='🔇 SILENCIO';btn.classList.add('playing')}
   sPlaying=!sPlaying;
 }
-  else{audio.play().catch(()=>{});btn.textContent='🔇 SILENCIO';btn.classList.add('playing')}
-  sPlaying=!sPlaying;
-}
 
 // LANG
 function setL(l){
@@ -850,6 +858,14 @@ function setL(l){
 
 // TABS
 function sT(id,btn){document.querySelectorAll('.ppane').forEach(p=>p.classList.remove('on'));document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('on'));document.getElementById('pa-'+id).classList.add('on');btn.classList.add('on')}
+
+// DICCIONARIO ACCORDION
+function togD(t){
+  const item=t.closest('.ditem');
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.ditem.open').forEach(el=>el.classList.remove('open'));
+  if(!wasOpen)item.classList.add('open');
+}
 
 // DICCIONARIO DATA
 const DICT=[
@@ -919,17 +935,6 @@ function nxtQ(){if(++cQ>=QS.length){['qq','qo','qf','qn'].forEach(id=>document.g
 function rstQ(){cQ=0;sc=0;['qq','qo','qf','qn'].forEach(id=>document.getElementById(id).style.display='');document.getElementById('qr').style.display='none';ldQ()}
 
 
-// Animate quotes when in view
-const sqObs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      setTimeout(()=>e.target.classList.add('sq-lit'), 200);
-    } else {
-      e.target.classList.remove('sq-lit');
-    }
-  });
-},{threshold:0.4});
-document.querySelectorAll('.sq').forEach(el=>sqObs.observe(el));
 
 // FORM
 async function sndF(e){
