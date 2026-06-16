@@ -194,9 +194,9 @@ p:last-child{margin-bottom:0}
 .qwrap{background:#0a0700;border:1px solid #1e1508;padding:2.5rem;margin-top:2rem;max-width:740px;position:relative;overflow:hidden;display:block}
 .qwrap::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent)}
 .qscore{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--smoke);letter-spacing:0.15em;margin-bottom:1.8rem}
-.qq{font-family:'Cinzel',serif;font-size:1.45rem;color:var(--white);margin-bottom:2.2rem;line-height:1.45;min-height:4.5rem}
+.qq{font-family:'Cinzel',serif;font-size:1.35rem;color:#fdf8ee;margin-bottom:1.8rem;line-height:1.45;min-height:3rem}
 .qopts{display:flex;flex-direction:column;gap:1rem;margin-bottom:1.8rem}
-.qopt{background:#1e1508;border:1px solid transparent;color:var(--mist);padding:1.15rem 1.8rem;font-family:'Cormorant Garamond',serif;font-size:1.1rem;text-align:left;transition:all 0.25s;border-radius:2px}
+.qopt{background:#1a1208;border:1px solid #2a1e0a;color:#c8b896;padding:1rem 1.4rem;font-family:'Cormorant Garamond',serif;font-size:1.05rem;text-align:left;transition:all 0.25s;border-radius:3px;width:100%}
 .qopt:hover{border-color:var(--gold);background:#0d0a04;color:var(--bone);transform:translateX(4px)}
 .qopt.ok{border-color:var(--green2);background:rgba(58,86,40,0.25);color:var(--white)}
 .qopt.no{border-color:#6a2020;background:rgba(106,32,32,0.2);color:var(--smoke)}
@@ -405,7 +405,7 @@ body.en .en{display:block}
 <div id="fire-audio-stub"></div>
 
 <nav id="nav">
-  <a href="#" class="logo">ACACIA</a>
+  <a href="#top" class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">ACACIA</a>
   <ul class="nav-links" id="nl">
     <li><a href="#historia" onclick="cN()">Historia</a></li>
     <li><a href="#magueyes" onclick="cN()">Magueyes</a></li>
@@ -421,11 +421,8 @@ body.en .en{display:block}
 </nav>
 <canvas id="embers"></canvas>
 
-<!-- FIXED PILLS -->
-<div id="fixed-pills" style="position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;gap:0.8rem;z-index:400">
-  <a href="#top" style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(4,3,1,0.92);border:1px solid rgba(200,146,42,0.4);color:#c8922a;padding:0.5rem 1rem;text-decoration:none;border-radius:20px;backdrop-filter:blur(8px);transition:all 0.3s" onmouseover="this.style.borderColor='#c8922a'" onmouseout="this.style.borderColor='rgba(200,146,42,0.4)'">↑ Inicio</a>
-  <a href="#contacto" style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(200,146,42,0.9);border:1px solid #c8922a;color:#040301;padding:0.5rem 1rem;text-decoration:none;border-radius:20px;transition:all 0.3s">Contacto</a>
-</div>
+<!-- FIXED CONTACT PILL -->
+<a href="#contacto" id="fixed-contact" style="position:fixed;top:1rem;left:50%;transform:translateX(-50%);z-index:499;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(200,146,42,0.92);color:#040301;padding:0.45rem 1.2rem;text-decoration:none;border-radius:20px;backdrop-filter:blur(8px);transition:opacity 0.3s;white-space:nowrap">Contacto</a>
 
 <!-- HERO -->
 <div class="hero" id="top">
@@ -692,7 +689,7 @@ body.en .en{display:block}
   <h2 class="rev en">How much do you<br>know about mezcal?</h2>
   <p class="rev es">10 preguntas. Sin trampa. Lo que no sepas hoy, lo aprenderás al terminar.</p>
   <p class="rev en">10 questions. No tricks. What you don't know today, you'll learn when you finish.</p>
-  <div class="qwrap rev">
+  <div class="qwrap">
     <div class="qscore" id="qs">Pregunta 1 / 10</div>
     <div class="qq" id="qq"></div>
     <div class="qopts" id="qo"></div>
@@ -786,22 +783,37 @@ function cN(){document.getElementById('nl').classList.remove('open')}
 // SOUND
 let sPlaying=false,audioCtx=null,fireNodes=[];
 function createFire(){
-  if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();
-  fireNodes=[];
-  for(let i=0;i<4;i++){
-    const buf=audioCtx.createBuffer(1,audioCtx.sampleRate*2,audioCtx.sampleRate);
-    const d=buf.getChannelData(0);
-    for(let j=0;j<d.length;j++)d[j]=(Math.random()*2-1)*0.15;
-    const src=audioCtx.createBufferSource();
+  try{
+    if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    if(audioCtx.state==='suspended')audioCtx.resume();
+    fireNodes=[];
+    // Low rumble
+    var bufLen=audioCtx.sampleRate*3;
+    var buf=audioCtx.createBuffer(1,bufLen,audioCtx.sampleRate);
+    var d=buf.getChannelData(0);
+    for(var j=0;j<bufLen;j++)d[j]=(Math.random()*2-1);
+    var src=audioCtx.createBufferSource();
     src.buffer=buf;src.loop=true;
-    const filt=audioCtx.createBiquadFilter();
-    filt.type='bandpass';filt.frequency.value=200+i*120;filt.Q.value=0.8;
-    const gain=audioCtx.createGain();
-    gain.gain.value=0.08+Math.random()*0.06;
-    src.connect(filt);filt.connect(gain);gain.connect(audioCtx.destination);
-    src.start(audioCtx.currentTime+i*0.1);
+    var lp=audioCtx.createBiquadFilter();
+    lp.type='lowpass';lp.frequency.value=400;
+    var gain=audioCtx.createGain();
+    gain.gain.value=0.12;
+    src.connect(lp);lp.connect(gain);gain.connect(audioCtx.destination);
+    src.start();
     fireNodes.push(src);
-  }
+    // Crackle
+    var buf2=audioCtx.createBuffer(1,bufLen,audioCtx.sampleRate);
+    var d2=buf2.getChannelData(0);
+    for(var k=0;k<bufLen;k++)d2[k]=Math.random()<0.003?(Math.random()*2-1)*0.8:0;
+    var src2=audioCtx.createBufferSource();
+    src2.buffer=buf2;src2.loop=true;
+    var hp=audioCtx.createBiquadFilter();
+    hp.type='bandpass';hp.frequency.value=2000;hp.Q.value=0.5;
+    var g2=audioCtx.createGain();g2.gain.value=0.3;
+    src2.connect(hp);hp.connect(g2);g2.connect(audioCtx.destination);
+    src2.start();
+    fireNodes.push(src2);
+  }catch(e){console.log('Audio:',e)}
 }
 function stopFire(){fireNodes.forEach(n=>{try{n.stop()}catch(e){}});fireNodes=[]}
 function toggleSound(){
@@ -817,10 +829,14 @@ function toggleSound(){
 // LANG
 function setL(l){
   document.body.className=l==='en'?'en':'';
-  document.querySelectorAll('.lb').forEach((b,i)=>b.classList.toggle('on',(i===0&&l==='es')||(i===1&&l==='en')));
-  // Force show/hide for all lang elements
-  document.querySelectorAll('.es').forEach(el=>el.style.display=l==='en'?'none':'');
-  document.querySelectorAll('.en').forEach(el=>el.style.display=l==='en'?'block':'none');
+  document.querySelectorAll('.lb').forEach(function(b,i){b.classList.toggle('on',(i===0&&l==='es')||(i===1&&l==='en'))});
+  if(l==='en'){
+    document.querySelectorAll('.es').forEach(function(el){el.style.display='none'});
+    document.querySelectorAll('.en').forEach(function(el){el.style.display='block'});
+  } else {
+    document.querySelectorAll('.es').forEach(function(el){el.style.display=''});
+    document.querySelectorAll('.en').forEach(function(el){el.style.display='none'});
+  }
 }
 
 // TABS
@@ -868,18 +884,31 @@ const QS=[
 ];
 let cQ=0,sc=0,dn=false;
 function ldQ(){
-  const q=QS[cQ];
-  const qsEl=document.getElementById('qs');
-  const qqEl=document.getElementById('qq');
-  const qfEl=document.getElementById('qf');
-  const qnEl=document.getElementById('qn');
-  const qoEl=document.getElementById('qo');
-  if(!qsEl||!qqEl||!qoEl)return;
-  qsEl.textContent=`Pregunta ${cQ+1} / ${QS.length}`;document.getElementById('qq').textContent=q.q;document.getElementById('qf').textContent='';document.getElementById('qn').style.display='none';dn=false;const o=document.getElementById('qo');o.innerHTML='';q.o.forEach((op,i)=>{const b=document.createElement('button');b.className='qopt';b.textContent=op;b.onclick=()=>ansQ(i);o.appendChild(b)})}
+  var q=QS[cQ];
+  var qs=document.getElementById('qs');
+  var qq=document.getElementById('qq');
+  var qf=document.getElementById('qf');
+  var qn=document.getElementById('qn');
+  var qo=document.getElementById('qo');
+  if(!qs||!qq||!qo){console.error('Quiz elements not found');return;}
+  qs.textContent='Pregunta '+(cQ+1)+' / '+QS.length;
+  qq.textContent=q.q;
+  if(qf)qf.textContent='';
+  if(qn)qn.style.display='none';
+  dn=false;
+  qo.innerHTML='';
+  q.o.forEach(function(op,i){
+    var b=document.createElement('button');
+    b.className='qopt';
+    b.textContent=op;
+    b.onclick=function(){ansQ(i)};
+    qo.appendChild(b);
+  })
+}
 function ansQ(i){if(dn)return;dn=true;const q=QS[cQ];document.querySelectorAll('.qopt').forEach((b,j)=>{if(j===q.a)b.classList.add('ok');else if(j===i)b.classList.add('no')});if(i===q.a)sc++;document.getElementById('qf').textContent=q.f;document.getElementById('qn').style.display='inline-block'}
 function nxtQ(){if(++cQ>=QS.length){['qq','qo','qf','qn'].forEach(id=>document.getElementById(id).style.display='none');document.getElementById('qr').style.display='block';document.getElementById('qfn').textContent=`${sc} / ${QS.length}`;const m=["Apenas empiezas el camino. El maguey tiene más paciencia que tú.","Algo sabes. Pero el Tepeztate tardó 30 años. Puedes dedicar más tiempo.","Buen nivel. Ya puedes hablar de mezcal en una cata sin avergonzarte.","Excelente. Eres de los que respetan el mezcal de verdad.","Maestro Mezcalero honorario. San Luis Amatlán te espera con un Tepeztate."];document.getElementById('qwm').textContent=m[Math.floor((sc/QS.length)*(m.length-.01))]}else ldQ()}
 function rstQ(){cQ=0;sc=0;['qq','qo','qf','qn'].forEach(id=>document.getElementById(id).style.display='');document.getElementById('qr').style.display='none';ldQ()}
-ldQ();
+document.addEventListener("DOMContentLoaded",function(){ldQ();});
 
 // Animate quotes when in view
 const sqObs = new IntersectionObserver(entries=>{
