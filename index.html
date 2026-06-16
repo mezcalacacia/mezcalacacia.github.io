@@ -92,24 +92,24 @@ nav.scrolled{background:rgba(4,3,1,0.96);backdrop-filter:blur(20px);padding:0.9r
 .sec{padding:9rem 5rem;max-width:1240px;margin:0 auto;background:#040301}
 .sec-dark{background:#080601;max-width:100%;padding:9rem 5rem}
 .sec-dark-in{max-width:1240px;margin:0 auto}
-.eyebrow{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.5em;color:var(--gold);text-transform:uppercase;margin-bottom:1.4rem;display:flex;align-items:center;gap:1.2rem}
+.eyebrow{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.45em;color:#c8922a;text-transform:uppercase;margin-bottom:1.4rem;display:flex;align-items:center;gap:1.2rem}
 .eyebrow::after{content:'';height:1px;background:linear-gradient(to right,var(--earth),transparent);flex:1;max-width:80px}
-h2{font-family:'Cinzel Decorative',serif;font-size:clamp(2.2rem,4vw,3.8rem);font-weight:700;line-height:1.1;color:var(--white)!important;margin-bottom:2rem}
-h3{font-family:'Cinzel',serif;font-size:1.5rem;font-weight:400;color:var(--gold2);margin-bottom:0.9rem}
+h2{font-family:'Cinzel Decorative',serif;font-size:clamp(2.2rem,4vw,3.8rem);font-weight:700;line-height:1.1;color:#fdf8ee;margin-bottom:2rem}
+h3{font-family:'Cinzel',serif;font-size:1.5rem;font-weight:400;color:#e8b84b;margin-bottom:0.9rem}
 p{color:var(--mist)!important;margin-bottom:1.4rem;font-size:1.12rem;line-height:1.9}
 p:last-child{margin-bottom:0}
 
 /* ── TIMELINE ── */
 .tl{position:relative;padding-left:4.5rem;margin-top:4rem}
 .tl::before{content:'';position:absolute;left:1.1rem;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--gold) 0%,var(--earth) 50%,var(--green) 100%)}
-.tli{position:relative;margin-bottom:5rem;opacity:0;transform:translateX(-28px);transition:opacity 0.8s cubic-bezier(.16,1,.3,1),transform 0.8s cubic-bezier(.16,1,.3,1)}
+.tli{position:relative;margin-bottom:5rem;opacity:0;transform:translateX(-15px);transition:opacity 0.7s ease,transform 0.7s ease}
 .tli.vis{opacity:1;transform:translateX(0)}
 .tld{position:absolute;left:-3.8rem;top:0.6rem;width:15px;height:15px;border-radius:50%;background:var(--gold);border:3px solid var(--bg);box-shadow:0 0 18px rgba(200,146,42,0.7)}
 
 /* HISTORIA hover text effect */
 .tli h3{transition:font-size 0.3s ease,color 0.3s ease,letter-spacing 0.3s ease}
 .tli:hover h3{font-size:1.75rem;color:var(--amber);letter-spacing:0.02em}
-.tl-era{font-family:'Cinzel',serif;font-size:0.65rem;color:var(--gold);letter-spacing:0.35em;text-transform:uppercase;margin-bottom:0.7rem}
+.tl-era{font-family:'Cinzel',serif;font-size:0.65rem;color:#c8922a;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:0.7rem;display:block}
 
 /* ── MAGUEY CARDS ── */
 .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:#1e1508;margin-top:4rem}
@@ -117,10 +117,10 @@ p:last-child{margin-bottom:0}
 .mcard::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,146,42,0.03),transparent);opacity:0;transition:opacity 0.4s}
 .mcard.vis{opacity:1;transform:translateY(0) scale(1)}
 .mcard:hover{border-top-color:var(--gold);background:#0d0a04}.mcard:hover::before{opacity:1}
-.mname{font-family:'Cinzel',serif;font-size:1.3rem;color:var(--gold2);margin-bottom:0.25rem}
+.mname{font-family:'Cinzel',serif;font-size:1.3rem;color:#e8b84b;margin-bottom:0.25rem}
 .msci{font-family:'Cinzel',serif;font-size:0.6rem;color:var(--green2);letter-spacing:0.15em;font-style:italic;margin-bottom:0.9rem;text-transform:uppercase}
 .mtag{display:inline-block;font-family:'Cinzel',serif;font-size:0.58rem;color:var(--gold);background:rgba(200,146,42,0.07);border:1px solid rgba(200,146,42,0.18);padding:0.22rem 0.7rem;margin-bottom:1rem;letter-spacing:0.12em}
-.mcard p{font-size:1rem;color:var(--smoke);margin:0}
+.mcard p{font-size:1rem;color:#a89878;margin:0}
 
 /* Tipo mezcal section */
 .mtipo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
@@ -142,8 +142,8 @@ p:last-child{margin-bottom:0}
 .ppane.on .pstep{opacity:1;transform:translateX(0)}
 .ppane.on .pstep:nth-child(1){transition-delay:0.05s}.ppane.on .pstep:nth-child(2){transition-delay:0.15s}.ppane.on .pstep:nth-child(3){transition-delay:0.25s}.ppane.on .pstep:nth-child(4){transition-delay:0.35s}
 .psn{font-family:'Cinzel Decorative',serif;font-size:3.5rem;font-weight:900;color:rgba(200,146,42,0.1);line-height:1;min-width:3.5rem}
-.pstep h4{font-family:'Cinzel',serif;font-size:1.08rem;color:var(--gold2);margin-bottom:0.45rem}
-.pstep p{font-size:1.02rem;margin:0}
+.pstep h4{font-family:'Cinzel',serif;font-size:1.08rem;color:#e8b84b;margin-bottom:0.45rem}
+.pstep p{font-size:1.02rem;margin:0;color:#c8b896}
 
 /* ── FLAVORS ── */
 .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1e1508;margin-top:3.5rem}
@@ -152,7 +152,7 @@ p:last-child{margin-bottom:0}
 .fcell:hover{background:#0d0a04;transform:translateY(-4px)}.fcell:hover::before{transform:scaleX(1)}
 .ficon{font-size:2rem;display:block;margin-bottom:1rem;filter:drop-shadow(0 0 8px rgba(200,146,42,0.3))}
 .fname{font-family:'Cinzel',serif;font-size:1.08rem;color:var(--gold2);margin-bottom:0.6rem}
-.fcell p{font-size:0.95rem;color:var(--smoke);margin:0}
+.fcell p{font-size:0.95rem;color:#a89878;margin:0}
 .fexample{font-family:'Cinzel',serif;font-size:0.6rem;color:rgba(200,146,42,0.6);letter-spacing:0.1em;margin-top:0.6rem!important;font-style:italic}
 
 /* ── SHOWCASE ── */
@@ -167,8 +167,8 @@ p:last-child{margin-bottom:0}
 .rcard{background:#1e1508;padding:2.8rem 2rem;border:1px solid transparent;transition:all 0.4s;position:relative}
 .rcard::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--gold);transition:height 0.4s}
 .rcard:hover{border-color:rgba(200,146,42,0.2);background:#0d0a04}.rcard:hover::before{height:100%}
-.rtitle{font-family:'Cinzel',serif;font-size:1.12rem;color:var(--gold2);margin-bottom:0.8rem}
-.rcard p{font-size:0.97rem;color:var(--smoke);margin:0}
+.rtitle{font-family:'Cinzel',serif;font-size:1.12rem;color:#e8b84b;margin-bottom:0.8rem}
+.rcard p{font-size:0.97rem;color:#a89878;margin:0}
 
 /* ── DICCIONARIO ACCORDION ── */
 .dlist{margin-top:2rem;display:flex;flex-direction:column;gap:0;max-width:800px}
@@ -188,7 +188,7 @@ p:last-child{margin-bottom:0}
 .cc:hover{background:#0d0a04}
 .cc-icon{font-size:2.2rem;display:block;margin-bottom:0.8rem}
 .cc-name{font-family:'Cinzel',serif;font-size:0.92rem;color:var(--gold2);margin-bottom:0.5rem}
-.cc p{font-size:0.88rem;color:var(--smoke);margin:0}
+.cc p{font-size:0.88rem;color:#a89878;margin:0}
 
 /* ── QUIZ ── */
 .qwrap{background:#0a0700;border:1px solid var(--earth);padding:4rem;margin-top:3rem;max-width:740px;position:relative;overflow:hidden}
@@ -213,7 +213,7 @@ p:last-child{margin-bottom:0}
 .cinfo-item{display:flex;gap:1.4rem;margin-bottom:2.2rem;align-items:flex-start}
 .cicon{font-size:1.5rem;min-width:2rem}
 .ctext strong{font-family:'Cinzel',serif;font-size:0.9rem;color:var(--gold2);display:block;margin-bottom:0.3rem}
-.ctext span{font-size:0.98rem;color:var(--smoke)}
+.ctext span{font-size:0.98rem;color:#c8b896}
 .cform{display:flex;flex-direction:column;gap:1.6rem;background:#040301}
 .fg{display:flex;flex-direction:column;gap:0.5rem}
 .fg label{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--smoke)}
@@ -371,6 +371,20 @@ body.en .en{display:block}
 }
 @keyframes fireB{0%,100%{opacity:.75;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.07)}}
 @keyframes fireR{0%,100%{opacity:.5;transform:translateX(-50%) scaleX(1)}50%{opacity:.85;transform:translateX(-50%) scaleX(1.12)}}
+
+/* Fallback: show content even if JS observer fails */
+@media(prefers-reduced-motion:reduce){
+  .rev,.rev-l,.tli,.mcard,.rcard,.fcell,.cc{opacity:1!important;transform:none!important}
+}
+/* Mobile: simplify animations to avoid invisible content */
+@media(max-width:960px){
+  .tli{opacity:1!important;transform:none!important;transition:none}
+  .rev{opacity:1!important;transform:none!important;transition:none}
+  .rev-l{opacity:1!important;transform:none!important;transition:none}
+  .mcard{opacity:1!important;transform:none!important}
+  .rcard,.fcell,.cc,.mtipo{opacity:1!important;transform:none!important}
+  .ptab::before{display:none}
+}
 </style>
 </head>
 <body>
