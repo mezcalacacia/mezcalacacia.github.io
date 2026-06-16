@@ -36,7 +36,7 @@ nav.scrolled{background:rgba(4,3,1,0.96);backdrop-filter:blur(20px);padding:0.9r
 .burger span{width:28px;height:1px;background:var(--gold);display:block;transition:0.3s}
 
 /* ── SOUND BTN ── */
-#sound-btn{position:fixed;top:1.1rem;right:8rem;z-index:600;background:rgba(4,3,1,0.92);border:1px solid rgba(200,146,42,0.4);color:#c8922a;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.15em;padding:0.45rem 0.9rem;transition:all 0.3s;border-radius:2px;backdrop-filter:blur(8px)}
+#sound-btn{position:fixed;bottom:2rem;left:1.5rem;z-index:490;background:rgba(4,3,1,0.92);border:1px solid rgba(200,146,42,0.35);color:#c8922a;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.15em;padding:0.45rem 0.9rem;transition:all 0.3s;border-radius:20px;backdrop-filter:blur(8px)}
 #sound-btn:hover{border-color:var(--gold2);color:var(--gold2);background:rgba(200,146,42,0.1)}
 #sound-btn.playing{border-color:var(--gold);color:var(--gold);background:rgba(200,146,42,0.12);box-shadow:0 0 10px rgba(200,146,42,0.25)}
 
@@ -239,8 +239,8 @@ footer{background:#080601;border-top:1px solid var(--earth);padding:6rem 5rem 3r
 
 /* ── LANG ── */
 .lang{position:fixed;bottom:2.5rem;right:2.5rem;z-index:600;display:flex;border:1px solid var(--earth);background:#080601}
-.lb{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.18em;background:transparent;border:none;color:var(--smoke);padding:0.55rem 1rem;transition:all 0.25s}
-.lb.on{background:var(--gold);color:var(--bg)}
+.lb{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.15em;background:transparent;border:none;color:#7a6a52;padding:0.45rem 0.9rem;transition:all 0.25s}
+.lb.on{background:#c8922a;color:#040301}
 
 /* ── PARALLAX QUOTE ── */
 .pq{position:relative;height:300px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0d0900 0%,#1c0f02 50%,#090600 100%);border-top:1px solid rgba(200,146,42,0.1);border-bottom:1px solid rgba(200,146,42,0.1)}
@@ -272,8 +272,8 @@ footer{background:#080601;border-top:1px solid var(--earth);padding:6rem 5rem 3r
 
 /* ── LANG ── */
 .en{display:none}
-body.en .es{display:none}
-body.en .en{display:block}
+body.lang-en .es{display:none}
+body.lang-en .en{display:block}
 
 /* ── MOBILE ── */
 @media(max-width:960px){
@@ -284,7 +284,7 @@ body.en .en{display:block}
   .nav-links.open{display:flex!important}
   .nav-links a{font-size:1.1rem;letter-spacing:0.1em}
   .burger{display:flex!important}
-  #sound-btn{top:0.8rem;right:4rem;writing-mode:horizontal-tb;font-size:0.55rem;padding:0.35rem 0.7rem}
+  #sound-btn{bottom:2rem;left:1rem;top:auto;right:auto;font-size:0.55rem;padding:0.4rem 0.8rem}
   .lang{bottom:1.5rem;right:1rem}
   .hero{grid-template-columns:1fr;padding:0;min-height:100vh;display:flex;flex-direction:column}
   .hero-left{padding:6rem 1.5rem 1rem;order:1;text-align:center}
@@ -421,8 +421,7 @@ body.en .en{display:block}
 </nav>
 <canvas id="embers"></canvas>
 
-<!-- FIXED CONTACT PILL -->
-<a href="#contacto" id="fixed-contact" style="position:fixed;top:1rem;left:50%;transform:translateX(-50%);z-index:499;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(200,146,42,0.92);color:#040301;padding:0.45rem 1.2rem;text-decoration:none;border-radius:20px;backdrop-filter:blur(8px);transition:opacity 0.3s;white-space:nowrap">Contacto</a>
+
 
 <!-- HERO -->
 <div class="hero" id="top">
@@ -683,6 +682,15 @@ body.en .en{display:block}
 </div>
 
 <!-- QUIZ -->
+<!-- GLOSARIO -->
+<div class="sec" id="diccionario" style="background:#040301;padding:5rem 4rem">
+  <div class="eyebrow es">Glosario</div>
+  <div class="eyebrow en">Glossary</div>
+  <p style="font-size:0.9rem;color:#7a6a52;margin-bottom:1.5rem" class="es">Toca cada término para expandirlo</p>
+  <p style="font-size:0.9rem;color:#7a6a52;margin-bottom:1.5rem" class="en">Tap each term to expand</p>
+  <div class="dlist" id="dlist"></div>
+</div>
+
 <div class="sec-dark" style="background:#080601" id="quiz"><div class="sec-dark-in">
   <div class="eyebrow es">07 — Quiz</div><div class="eyebrow en">07 — Quiz</div>
   <h2 class="rev es">¿Cuánto sabes<br>de mezcal?</h2>
@@ -828,15 +836,16 @@ function toggleSound(){
 
 // LANG
 function setL(l){
-  document.body.className=l==='en'?'en':'';
-  document.querySelectorAll('.lb').forEach(function(b,i){b.classList.toggle('on',(i===0&&l==='es')||(i===1&&l==='en'))});
-  if(l==='en'){
-    document.querySelectorAll('.es').forEach(function(el){el.style.display='none'});
-    document.querySelectorAll('.en').forEach(function(el){el.style.display='block'});
-  } else {
-    document.querySelectorAll('.es').forEach(function(el){el.style.display=''});
-    document.querySelectorAll('.en').forEach(function(el){el.style.display='none'});
-  }
+  // Set body class for CSS-driven lang switch
+  document.body.className = l==='en' ? 'lang-en' : '';
+  // Update button states
+  document.querySelectorAll('.lb').forEach(function(b,i){
+    b.classList.toggle('on', (i===0&&l==='es')||(i===1&&l==='en'));
+  });
+  // Clear inline styles set by previous calls
+  document.querySelectorAll('.es,.en').forEach(function(el){
+    el.style.display='';
+  });
 }
 
 // TABS
@@ -908,7 +917,7 @@ function ldQ(){
 function ansQ(i){if(dn)return;dn=true;const q=QS[cQ];document.querySelectorAll('.qopt').forEach((b,j)=>{if(j===q.a)b.classList.add('ok');else if(j===i)b.classList.add('no')});if(i===q.a)sc++;document.getElementById('qf').textContent=q.f;document.getElementById('qn').style.display='inline-block'}
 function nxtQ(){if(++cQ>=QS.length){['qq','qo','qf','qn'].forEach(id=>document.getElementById(id).style.display='none');document.getElementById('qr').style.display='block';document.getElementById('qfn').textContent=`${sc} / ${QS.length}`;const m=["Apenas empiezas el camino. El maguey tiene más paciencia que tú.","Algo sabes. Pero el Tepeztate tardó 30 años. Puedes dedicar más tiempo.","Buen nivel. Ya puedes hablar de mezcal en una cata sin avergonzarte.","Excelente. Eres de los que respetan el mezcal de verdad.","Maestro Mezcalero honorario. San Luis Amatlán te espera con un Tepeztate."];document.getElementById('qwm').textContent=m[Math.floor((sc/QS.length)*(m.length-.01))]}else ldQ()}
 function rstQ(){cQ=0;sc=0;['qq','qo','qf','qn'].forEach(id=>document.getElementById(id).style.display='');document.getElementById('qr').style.display='none';ldQ()}
-document.addEventListener("DOMContentLoaded",function(){ldQ();});
+window.addEventListener("load",function(){if(document.getElementById("qq"))ldQ();});
 
 // Animate quotes when in view
 const sqObs = new IntersectionObserver(entries=>{
@@ -949,5 +958,8 @@ const sqObs=new IntersectionObserver(entries=>{
 },{threshold:0.35});
 document.querySelectorAll('.sq').forEach(el=>sqObs.observe(el));
 </script>
+
+<!-- CONTACT PILL -->
+<a href="#contacto" style="position:fixed;bottom:2rem;right:1.5rem;z-index:490;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;background:rgba(200,146,42,0.95);color:#040301;padding:0.5rem 1.1rem;text-decoration:none;border-radius:20px;box-shadow:0 4px 20px rgba(200,146,42,0.3);white-space:nowrap">Contacto ↓</a>
 </body>
 </html>
