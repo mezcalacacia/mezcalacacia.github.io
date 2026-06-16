@@ -1043,7 +1043,7 @@ async function sndF(e){
   msg.className='cmsg';msg.style.display='none';
   const data={nombre:document.getElementById('fn').value,email:document.getElementById('fe').value,telefono:document.getElementById('ft').value,interes:document.getElementById('fi').value,mensaje:document.getElementById('fm').value,fecha:new Date().toLocaleString('es-MX')};
   try{
-    await fetch('https://script.google.com/macros/s/REEMPLAZAR_APPS_SCRIPT_URL/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    await fetch('https://script.google.com/macros/s/AKfycbyFNd_uZAqu55Tj1-jm31GuGbrzZz4-yM4xojSLssfMqIlVyuKVGjbEDBMxKMKXeEZp/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
     msg.textContent='✓ Recibido. Te contactamos a la brevedad con lo que necesitas. El mezcal es paciencia.';
     msg.className='cmsg ok';e.target.reset();
   }catch(err){
