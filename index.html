@@ -26,6 +26,7 @@ body{background:#040301;color:var(--bone);font-family:'Cormorant Garamond',Georg
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 3.5rem;transition:all 0.5s}
 nav.scrolled{background:rgba(4,3,1,0.96);backdrop-filter:blur(20px);padding:0.9rem 3.5rem;border-bottom:1px solid rgba(200,146,42,0.12)}
+nav.menu-open{backdrop-filter:none!important;background:#040301!important}
 .logo{font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:var(--gold);letter-spacing:0.45em;text-decoration:none;transition:letter-spacing 0.4s}
 .logo:hover{letter-spacing:0.6em}
 .nav-links{display:flex;gap:2.2rem;list-style:none}
@@ -791,16 +792,27 @@ document.querySelectorAll('a,button,.qopt,.dtrig,.mcard,.rcard,.fcell').forEach(
 // NAV
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('scrolled',scrollY>60);
-  if(window.innerWidth<=960)document.getElementById('nl').classList.remove('open');
+  if(window.innerWidth<=960){
+    document.getElementById('nl').classList.remove('open');
+    document.getElementById('nav').classList.remove('menu-open');
+  }
 },{passive:true});
-function tN(){document.getElementById('nl').classList.toggle('open')}
-function cN(){document.getElementById('nl').classList.remove('open')}
-// Close overlay on link click and scroll manually (prevents overlay staying open)
+function tN(){
+  const nl=document.getElementById('nl');
+  const nav=document.getElementById('nav');
+  nl.classList.toggle('open');
+  nav.classList.toggle('menu-open',nl.classList.contains('open'));
+}
+function cN(){
+  document.getElementById('nl').classList.remove('open');
+  document.getElementById('nav').classList.remove('menu-open');
+}
 document.getElementById('nl').addEventListener('click',function(e){
   const a=e.target.closest('a');
   if(a&&a.getAttribute('href')&&a.getAttribute('href').startsWith('#')){
     e.preventDefault();
     this.classList.remove('open');
+    document.getElementById('nav').classList.remove('menu-open');
     const id=a.getAttribute('href').slice(1);
     setTimeout(function(){
       const el=document.getElementById(id);
