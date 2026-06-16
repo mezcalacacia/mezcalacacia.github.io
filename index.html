@@ -482,7 +482,7 @@ body.lang-en .es{display:none!important}
 </div>
 
 <!-- STREET QUOTE 1 -->
-<div class="sq"><blockquote class="es">"El mezcal no te cambia — solo te quita el disfraz."</blockquote><blockquote class="en">"Mezcal doesn't change you — it just removes the costume."</blockquote><cite>— Dicho del palenque</cite></div>
+<div class="sq"><blockquote class="es">"El mezcal no te cambia — solo te quita el disfraz."</blockquote><blockquote class="en">"Mezcal doesn\'t change you — it just removes the costume."</blockquote><cite>— Dicho del palenque</cite></div>
 
 <!-- LA MARCA — goes first, mystical -->
 <div class="showcase" id="marca">
@@ -711,13 +711,13 @@ body.lang-en .es{display:none!important}
     <div class="qq" id="qq"></div>
     <div class="qopts" id="qo"></div>
     <div class="qfb" id="qf"></div>
-    <button class="qbtn" id="qn" onclick="nxtQ()" style="display:none">Siguiente →</button>
+    <button class="qbtn" id="qn" onclick="nxtQ()" style="display:none"><span class="es">Siguiente →</span><span class="en">Next →</span></button>
     <div class="qresult" id="qr">
       <div class="qfinal-n" id="qfn"></div>
       <div class="qwin-msg" id="qwm"></div>
       <div class="qmezcal es">🥃 Si ganaste, nos echamos un mezcal. Si perdiste, también.</div>
       <div class="qmezcal en">🥃 If you won, let's have a mezcal. If you lost, also.</div>
-      <button class="qbtn" onclick="rstQ()" style="margin-top:1.5rem">Jugar de nuevo</button>
+      <button class="qbtn" onclick="rstQ()" style="margin-top:1.5rem"><span class="es">Jugar de nuevo</span><span class="en">Play again</span></button>
     </div>
   </div>
 </div></div>
@@ -943,16 +943,13 @@ function toggleSound(){
 
 // LANG
 function setL(l){
-  // Remove inline styles that might override CSS
-  document.querySelectorAll('.es,.en').forEach(function(el){
-    el.style.display='';
-  });
-  // Apply class to body - CSS handles the rest
-  document.body.className = (l==='en') ? 'lang-en' : '';
-  // Update button active state
+  document.querySelectorAll('.es,.en').forEach(function(el){el.style.display='';});
+  document.body.className=(l==='en')?'lang-en':'';
   document.querySelectorAll('.lb').forEach(function(b,i){
-    b.classList.toggle('on', (i===0 && l==='es') || (i===1 && l==='en'));
+    b.classList.toggle('on',(i===0&&l==='es')||(i===1&&l==='en'));
   });
+  // Refresh quiz and glossary to match new language
+  if(document.getElementById('qq'))ldQ();
 }
 
 // TABS
@@ -968,23 +965,23 @@ function togD(t){
 
 // DICCIONARIO DATA
 const DICT=[
-  {t:'Palenque',d:'El lugar donde nace el mezcal. Puede ser un rancho de tierra con hoyo de piedra o una instalación más moderna. El alma del maestro mezcalero vive en este espacio.'},
-  {t:'Maestro Mezcalero',d:'El artesano que lee el maguey, el clima y la fermentación. Su conocimiento no está escrito — está en sus manos, en su nariz y en su paladar. Se hereda de generación en generación.'},
-  {t:'Piña',d:'El corazón del maguey una vez cortadas todas las hojas (pencas). Puede pesar desde 10 kilos (Tobalá) hasta 500 kilos (Arroqueño). Se llama piña por su parecido visual con la fruta tropical.'},
-  {t:'Quiote',d:'El tallo floreciente del maguey — señal de que la planta está lista para morir y ser cosechada. Puede crecer hasta 8 metros en pocas semanas. Si se deja florecer, el maguey no sirve para mezcal.'},
-  {t:'Ensamble',d:'Mezcal producido con dos o más tipos de maguey en el mismo lote de fermentación y destilación. Los terroirsde cada planta se funden en un solo destilado.'},
-  {t:'Pechuga',d:'El mezcal más festivo. Se destila por tercera vez con frutas de temporada, especias y una pechuga de guajolote o pollo colgada en el vapor. Solo para celebraciones especiales.'},
-  {t:'Las Perlas',d:'La prueba ancestral del maestro mezcalero. Se vierte el mezcal de una altura sobre la palma de la mano o en jícara y se observan las burbujas que se forman. Si son pequeñas y duran, el mezcal tiene buen cuerpo y graduación natural.'},
-  {t:'Para todo mal, mezcal',d:'Y para todo bien, también. El refrán más honesto de la cultura oaxaqueña. No necesita explicación.'},
-  {t:'El mezcal es sabio',d:'Frase que se dice cuando alguien toma de más. El mezcal no te cambia — solo te revela quién eres y te quita el disfraz que cargas todos los días.'},
-  {t:'Tepache de maguey',d:'El líquido fermentado antes de la destilación. Parecido a una cerveza de maguey, entre 4-6% alc. Los maestros lo prueban para saber cuándo está listo para el alambique.'},
-  {t:'Ya me llevó el quinto',d:'Expresión popular. El "quinto" destilado es el más potente en una serie de pruebas. Significa que el mezcal ya hizo su trabajo completo.'},
-  {t:'Maguey silvestre vs cultivado',d:'Los silvestres (Tobalá, Tepeztate, Cuishe) crecen sin intervención humana y su mezcal refleja 100% el terroir salvaje. Los cultivados (Espadín) permiten producción controlada pero pueden perder algo de carácter si no se cuidan.'}
+  {t:'Palenque',d:'El lugar donde nace el mezcal. Puede ser un rancho de tierra con hoyo de piedra o una instalación más moderna. El alma del maestro mezcalero vive en este espacio.',te:'Palenque',de:'The place where mezcal is born. It can be an earthen ranch with a stone pit or a more modern facility. The mezcal master\'s soul lives in this space.'},
+  {t:'Maestro Mezcalero',d:'El artesano que lee el maguey, el clima y la fermentación. Su conocimiento no está escrito — está en sus manos, en su nariz y en su paladar. Se hereda de generación en generación.',te:'Maestro Mezcalero',de:'The craftsman who reads the agave, the climate, and the fermentation. His knowledge isn\'t written — it\'s in his hands, his nose, and his palate. Passed down from generation to generation.'},
+  {t:'Piña',d:'El corazón del maguey una vez cortadas todas las hojas (pencas). Puede pesar desde 10 kilos (Tobalá) hasta 500 kilos (Arroqueño). Se llama piña por su parecido visual con la fruta tropical.',te:'Piña (Heart)',de:'The heart of the agave once all the leaves (pencas) are cut off. Can weigh from 10 kg (Tobalá) to 500 kg (Arroqueño). Called piña for its visual resemblance to a pineapple.'},
+  {t:'Quiote',d:'El tallo floreciente del maguey — señal de que la planta está lista para morir y ser cosechada. Puede crecer hasta 8 metros en pocas semanas. Si se deja florecer, el maguey no sirve para mezcal.',te:'Quiote',de:'The agave\'s flowering stalk — the signal that the plant is ready to die and be harvested. It can grow up to 8 meters in a few weeks. If left to flower, the agave is no longer suitable for mezcal.'},
+  {t:'Ensamble',d:'Mezcal producido con dos o más tipos de maguey en el mismo lote de fermentación y destilación. Los terroirsde cada planta se funden en un solo destilado.',te:'Ensamble (Blend)',de:'Mezcal produced with two or more agave types in the same fermentation and distillation batch. The terroir of each plant fuses into a single distillate.'},
+  {t:'Pechuga',d:'El mezcal más festivo. Se destila por tercera vez con frutas de temporada, especias y una pechuga de guajolote o pollo colgada en el vapor. Solo para celebraciones especiales.',te:'Pechuga',de:'The most festive mezcal. Distilled a third time with seasonal fruits, spices, and a turkey or chicken breast hanging in the vapor. Only made for special celebrations.'},
+  {t:'Las Perlas',d:'La prueba ancestral del maestro mezcalero. Se vierte el mezcal de una altura sobre la palma de la mano o en jícara y se observan las burbujas que se forman. Si son pequeñas y duran, el mezcal tiene buen cuerpo y graduación natural.',te:'Las Perlas (The Pearls)',de:'The ancestral test of the mezcal master. Mezcal is poured from a height onto the palm or into a jícara and the bubbles are observed. Small, lasting bubbles indicate good body and natural proof.'},
+  {t:'Para todo mal, mezcal',d:'Y para todo bien, también. El refrán más honesto de la cultura oaxaqueña. No necesita explicación.',te:'For all ills, mezcal',de:'And for all good things, too. The most honest saying in Oaxacan culture. It needs no explanation.'},
+  {t:'El mezcal es sabio',d:'Frase que se dice cuando alguien toma de más. El mezcal no te cambia — solo te revela quién eres y te quita el disfraz que cargas todos los días.',te:'Mezcal is wise',de:'Said when someone drinks too much. Mezcal doesn\'t change you — it only reveals who you are and removes the disguise you carry every day.'},
+  {t:'Tepache de maguey',d:'El líquido fermentado antes de la destilación. Parecido a una cerveza de maguey, entre 4-6% alc. Los maestros lo prueban para saber cuándo está listo para el alambique.',te:'Agave Tepache',de:'The fermented liquid before distillation. Similar to an agave beer, 4–6% alc. Masters taste it to know when it\'s ready for the still.'},
+  {t:'Ya me llevó el quinto',d:'Expresión popular. El "quinto" destilado es el más potente en una serie de pruebas. Significa que el mezcal ya hizo su trabajo completo.',te:'Ya me llevó el quinto',de:'Popular expression. The "fifth" distillate is the most potent in a series of tests. It means the mezcal has done its complete work.'},
+  {t:'Maguey silvestre vs cultivado',d:'Los silvestres (Tobalá, Tepeztate, Cuishe) crecen sin intervención humana y su mezcal refleja 100% el terroir salvaje. Los cultivados (Espadín) permiten producción controlada pero pueden perder algo de carácter si no se cuidan.',te:'Wild vs cultivated agave',de:'Wild plants (Tobalá, Tepeztate, Cuishe) grow without human intervention and their mezcal reflects 100% wild terroir. Cultivated ones (Espadín) allow controlled production but can lose character if not carefully managed.'}
 ];
 const dlist=document.getElementById('dlist');
 DICT.forEach((item,i)=>{
   const div=document.createElement('div');div.className='ditem';
-  div.innerHTML=`<div class="dtrig" onclick="togD(this)"><span class="dterm">${item.t}</span><span class="darrow">+</span></div><div class="dbody"><p>${item.d}</p></div>`;
+  div.innerHTML=`<div class="dtrig" onclick="togD(this)"><span class="dterm es">${item.t}</span><span class="dterm en">${item.te||item.t}</span><span class="darrow">+</span></div><div class="dbody"><p class="es">${item.d}</p><p class="en">${item.de||item.d}</p></div>`;
   dlist.appendChild(div);
 });
 
@@ -995,19 +992,60 @@ document.querySelectorAll('.rev,.rev-l,.tli,.mcard,.rcard,.fcell,.cc').forEach(e
 
 // QUIZ
 const QS=[
-  {q:"¿El tequila es técnicamente un tipo de mezcal?",o:["Sí, es mezcal de Agave tequilana","No, son bebidas completamente distintas","Solo si se produce en Oaxaca","Solo si es 100% agave"],a:0,f:"Correcto. El tequila es mezcal de Agave tequilana weber. Los jaliscienses separaron el término en 1974 por razones comerciales y de branding."},
-  {q:"¿De dónde viene el sabor ahumado del mezcal artesanal?",o:["Del tipo de maguey usado","De la cocción de las piñas en hoyo de tierra","De la destilación en alambique de cobre","Del agua utilizada en la fermentación"],a:1,f:"El hoyo de tierra con piedras volcánicas es la fuente del ahumado. El humo penetra cada fibra del maguey durante días de cocción."},
-  {q:"¿Cuántos años puede tardar en madurar un maguey Tepeztate?",o:["5 a 8 años","10 a 15 años","25 a 35 años","50 a 60 años"],a:2,f:"El Tepeztate puede tardar más de 30 años. Crece literalmente en roca pura. Cuando lo bebes, estás bebiendo décadas de sierra oaxaqueña."},
-  {q:"¿El sabor frutal del mezcal viene de tener árboles frutales cerca del palenque?",o:["Sí, el maguey absorbe esos aromas","No, vienen de compuestos del suelo y levaduras silvestres","Sí, pero solo si son árboles de mango","Depende de la temporada del año"],a:1,f:"Este es uno de los mitos más comunes. Los aromas son compuestos volátiles generados por levaduras silvestres que reflejan el suelo, el pH y la altitud. El árbol frutal no tiene nada que ver."},
-  {q:"¿Qué son las 'perlas' del mezcal?",o:["Burbujas de gas carbónico al servir","Esferas que se forman al agitar la copa y revelan el cuerpo del mezcal","Impurezas del proceso de destilación","Cristales de azúcar residual"],a:1,f:"Prueba ancestral del maestro mezcalero. Perlas pequeñas y duraderas indican buen cuerpo, buen balance de alcohol y proceso natural."},
-  {q:"¿Qué es un 'Pechuga'?",o:["Un mezcal joven sin añejar","Mezcal destilado una tercera vez con frutas y pechuga de guajolote colgada en el vapor","Un tipo de maguey de la sierra","El nombre del primer destilado antes de rectificar"],a:1,f:"El Pechuga es el mezcal más festivo: tercera destilación con frutas de temporada y una pechuga animal colgada en el vapor. Solo se produce para celebraciones muy especiales."},
-  {q:"¿Cuándo se estableció la Denominación de Origen del Mezcal?",o:["1921 — centenario de la independencia","1974 — junto con la del tequila","1994 — protegiendo varios estados productores","2006 — con la NOM-070"],a:2,f:"La DOM se estableció en 1994, protegiendo el mezcal de Oaxaca, Guerrero, Durango, San Luis Potosí, Zacatecas y otros estados."},
-  {q:"¿Cuál método de producción permite usar olla de barro como destilador?",o:["Solo el Industrial","Solo el Artesanal","Solo el Ancestral","El Artesanal y el Ancestral pueden"],a:2,f:"La olla de barro como destilador es exclusiva del método Ancestral. Imparte notas minerales únicas que no se logran en cobre ni acero."},
-  {q:"¿Cuánto tiempo reposa un mezcal 'Reposado' en barrica?",o:["Menos de 2 meses","Entre 2 y 12 meses","Entre 1 y 3 años","Más de 3 años"],a:1,f:"El Reposado descansa entre 2 y 12 meses en barrica de roble. El Añejo requiere más de 12 meses. El Extra Añejo supera los 3 años."},
-  {q:"¿Qué es el 'quiote' del maguey?",o:["La raíz principal del maguey","El hijuelo que sale de la raíz madre","El tallo floreciente — señal de que el maguey está listo para morir y cosechar","El corazón del maguey ya cocido en el hoyo"],a:2,f:"El quiote es la señal de muerte del maguey — y paradójicamente la señal de que está listo para dar vida al mezcal. Puede crecer 8 metros en semanas. Si se deja florecer, la piña pierde azúcar."}
+  {q:"¿El tequila es técnicamente un tipo de mezcal?",qe:"Is tequila technically a type of mezcal?",
+   o:["Sí, es mezcal de Agave tequilana","No, son bebidas completamente distintas","Solo si se produce en Oaxaca","Solo si es 100% agave"],
+   oe:["Yes, it's mezcal from Agave tequilana","No, they are completely different drinks","Only if produced in Oaxaca","Only if it\'s 100% agave"],
+   a:0,f:"Correcto. El tequila es mezcal de Agave tequilana weber. Los jaliscienses separaron el término en 1974 por razones comerciales y de branding.",
+   fe:"Correct. Tequila is mezcal from Agave tequilana weber. The Jalisco industry separated the term in 1974 for commercial and branding reasons."},
+  {q:"¿De dónde viene el sabor ahumado del mezcal artesanal?",qe:"Where does the smoky flavor of artisanal mezcal come from?",
+   o:["Del tipo de maguey usado","De la cocción de las piñas en hoyo de tierra","De la destilación en alambique de cobre","Del agua utilizada en la fermentación"],
+   oe:["From the type of agave used","From roasting the piñas in an earthen pit","From distillation in copper stills","From the water used in fermentation"],
+   a:1,f:"El hoyo de tierra con piedras volcánicas es la fuente del ahumado. El humo penetra cada fibra del maguey durante días de cocción.",
+   fe:"The earthen pit with volcanic rocks is the source of the smokiness. Smoke penetrates every fiber of the agave during days of roasting."},
+  {q:"¿Cuántos años puede tardar en madurar un maguey Tepeztate?",qe:"How many years can a Tepeztate agave take to mature?",
+   o:["5 a 8 años","10 a 15 años","25 a 35 años","50 a 60 años"],
+   oe:["5 to 8 years","10 to 15 years","25 to 35 years","50 to 60 years"],
+   a:2,f:"El Tepeztate puede tardar más de 30 años. Crece literalmente en roca pura. Cuando lo bebes, estás bebiendo décadas de sierra oaxaqueña.",
+   fe:"Tepeztate can take more than 30 years to mature. It literally grows on pure rock. When you drink it, you\'re drinking decades of Oaxacan highlands."},
+  {q:"¿El sabor frutal del mezcal viene de tener árboles frutales cerca del palenque?",qe:"Does mezcal\'s fruity flavor come from having fruit trees near the palenque?",
+   o:["Sí, el maguey absorbe esos aromas","No, vienen de compuestos del suelo y levaduras silvestres","Sí, pero solo si son árboles de mango","Depende de la temporada del año"],
+   oe:["Yes, the agave absorbs those aromas","No, they come from soil compounds and wild yeasts","Yes, but only if they\'re mango trees","It depends on the season"],
+   a:1,f:"Este es uno de los mitos más comunes. Los aromas son compuestos volátiles generados por levaduras silvestres que reflejan el suelo, el pH y la altitud. El árbol frutal no tiene nada que ver.",
+   fe:"This is one of the most common myths. The aromas are volatile compounds generated by wild yeasts reflecting the soil, pH, and altitude. The fruit tree has nothing to do with it."},
+  {q:"¿Qué son las 'perlas' del mezcal?",qe:"What are mezcal 'pearls'?",
+   o:["Burbujas de gas carbónico al servir","Esferas que se forman al agitar la copa y revelan el cuerpo del mezcal","Impurezas del proceso de destilación","Cristales de azúcar residual"],
+   oe:["Carbon dioxide bubbles when poured","Spheres that form when swirling the glass, revealing the mezcal\'s body","Impurities from the distillation process","Residual sugar crystals"],
+   a:1,f:"Prueba ancestral del maestro mezcalero. Perlas pequeñas y duraderas indican buen cuerpo, buen balance de alcohol y proceso natural.",
+   fe:"Ancestral test of the mezcal master. Small, lasting pearls indicate good body, good alcohol balance, and a natural process."},
+  {q:"¿Qué es un 'Pechuga'?",qe:"What is a 'Pechuga'?",
+   o:["Un mezcal joven sin añejar","Mezcal destilado una tercera vez con frutas y pechuga de guajolote colgada en el vapor","Un tipo de maguey de la sierra","El nombre del primer destilado antes de rectificar"],
+   oe:["A young, unaged mezcal","Mezcal distilled a third time with fruits and a turkey breast hanging in the vapor","A type of highland agave","The name of the first distillate before rectification"],
+   a:1,f:"El Pechuga es el mezcal más festivo: tercera destilación con frutas de temporada y una pechuga animal colgada en el vapor. Solo se produce para celebraciones muy especiales.",
+   fe:"Pechuga is the most festive mezcal: a third distillation with seasonal fruits and an animal breast hanging in the vapor. Only produced for very special celebrations."},
+  {q:"¿Cuándo se estableció la Denominación de Origen del Mezcal?",qe:"When was the Mezcal Denomination of Origin established?",
+   o:["1921 — centenario de la independencia","1974 — junto con la del tequila","1994 — protegiendo varios estados productores","2006 — con la NOM-070"],
+   oe:["1921 — independence centennial","1974 — alongside tequila\'s","1994 — protecting several producing states","2006 — with NOM-070"],
+   a:2,f:"La DOM se estableció en 1994, protegiendo el mezcal de Oaxaca, Guerrero, Durango, San Luis Potosí, Zacatecas y otros estados.",
+   fe:"The DOM was established in 1994, protecting mezcal from Oaxaca, Guerrero, Durango, San Luis Potosí, Zacatecas, and other states."},
+  {q:"¿Cuál método de producción permite usar olla de barro como destilador?",qe:"Which production method allows using a clay pot as a still?",
+   o:["Solo el Industrial","Solo el Artesanal","Solo el Ancestral","El Artesanal y el Ancestral pueden"],
+   oe:["Only Industrial","Only Artisanal","Only Ancestral","Both Artisanal and Ancestral can"],
+   a:2,f:"La olla de barro como destilador es exclusiva del método Ancestral. Imparte notas minerales únicas que no se logran en cobre ni acero.",
+   fe:"The clay pot still is exclusive to the Ancestral method. It imparts unique mineral notes that can\'t be achieved with copper or steel."},
+  {q:"¿Cuánto tiempo reposa un mezcal 'Reposado' en barrica?",qe:"How long does a 'Reposado' mezcal rest in a barrel?",
+   o:["Menos de 2 meses","Entre 2 y 12 meses","Entre 1 y 3 años","Más de 3 años"],
+   oe:["Less than 2 months","Between 2 and 12 months","Between 1 and 3 years","More than 3 years"],
+   a:1,f:"El Reposado descansa entre 2 y 12 meses en barrica de roble. El Añejo requiere más de 12 meses. El Extra Añejo supera los 3 años.",
+   fe:"Reposado rests between 2 and 12 months in oak barrels. Añejo requires more than 12 months. Extra Añejo exceeds 3 years."},
+  {q:"¿Qué es el 'quiote' del maguey?",qe:"What is the agave\'s \'quiote\'?",
+   o:["La raíz principal del maguey","El hijuelo que sale de la raíz madre","El tallo floreciente — señal de que el maguey está listo para morir y cosechar","El corazón del maguey ya cocido en el hoyo"],
+   oe:["The agave's main root","The offshoot that grows from the mother plant","The flowering stalk — a sign the agave is ready to die and be harvested","The agave heart already roasted in the pit"],
+   a:2,f:"El quiote es la señal de muerte del maguey — y paradójicamente la señal de que está listo para dar vida al mezcal. Puede crecer 8 metros en semanas. Si se deja florecer, la piña pierde azúcar.",
+   fe:"The quiote is the agave\'s death signal — and paradoxically the signal that it\'s ready to give life to mezcal. It can grow 8 meters in weeks. If left to flower, the piña loses sugar."}
 ];
 let cQ=0,sc=0,dn=false;
 function ldQ(){
+  var isEN=document.body.classList.contains('lang-en');
   var q=QS[cQ];
   var qs=document.getElementById('qs');
   var qq=document.getElementById('qq');
@@ -1015,13 +1053,14 @@ function ldQ(){
   var qn=document.getElementById('qn');
   var qo=document.getElementById('qo');
   if(!qs||!qq||!qo){console.error('Quiz elements not found');return;}
-  qs.textContent='Pregunta '+(cQ+1)+' / '+QS.length;
-  qq.textContent=q.q;
+  qs.textContent=(isEN?'Question ':'Pregunta ')+(cQ+1)+' / '+QS.length;
+  qq.textContent=isEN?(q.qe||q.q):q.q;
   if(qf)qf.textContent='';
   if(qn)qn.style.display='none';
   dn=false;
   qo.innerHTML='';
-  q.o.forEach(function(op,i){
+  var opts=isEN?(q.oe||q.o):q.o;
+  opts.forEach(function(op,i){
     var b=document.createElement('button');
     b.className='qopt';
     b.textContent=op;
@@ -1029,8 +1068,8 @@ function ldQ(){
     qo.appendChild(b);
   })
 }
-function ansQ(i){if(dn)return;dn=true;const q=QS[cQ];document.querySelectorAll('.qopt').forEach((b,j)=>{if(j===q.a)b.classList.add('ok');else if(j===i)b.classList.add('no')});if(i===q.a)sc++;document.getElementById('qf').textContent=q.f;document.getElementById('qn').style.display='inline-block'}
-function nxtQ(){if(++cQ>=QS.length){['qq','qo','qf','qn'].forEach(id=>document.getElementById(id).style.display='none');document.getElementById('qr').style.display='block';document.getElementById('qfn').textContent=`${sc} / ${QS.length}`;const m=["Apenas empiezas el camino. El maguey tiene más paciencia que tú.","Algo sabes. Pero el Tepeztate tardó 30 años. Puedes dedicar más tiempo.","Buen nivel. Ya puedes hablar de mezcal en una cata sin avergonzarte.","Excelente. Eres de los que respetan el mezcal de verdad.","Maestro Mezcalero honorario. San Luis Amatlán te espera con un Tepeztate."];document.getElementById('qwm').textContent=m[Math.floor((sc/QS.length)*(m.length-.01))]}else ldQ()}
+function ansQ(i){if(dn)return;dn=true;const q=QS[cQ];const isEN=document.body.classList.contains('lang-en');document.querySelectorAll('.qopt').forEach((b,j)=>{if(j===q.a)b.classList.add('ok');else if(j===i)b.classList.add('no')});if(i===q.a)sc++;document.getElementById('qf').textContent=isEN?(q.fe||q.f):q.f;document.getElementById('qn').style.display='inline-block'}
+function nxtQ(){if(++cQ>=QS.length){['qq','qo','qf','qn'].forEach(id=>document.getElementById(id).style.display='none');document.getElementById('qr').style.display='block';document.getElementById('qfn').textContent=`${sc} / ${QS.length}`;const isEN=document.body.classList.contains('lang-en');const mES=["Apenas empiezas el camino. El maguey tiene más paciencia que tú.","Algo sabes. Pero el Tepeztate tardó 30 años. Puedes dedicar más tiempo.","Buen nivel. Ya puedes hablar de mezcal en una cata sin avergonzarte.","Excelente. Eres de los que respetan el mezcal de verdad.","Maestro Mezcalero honorario. San Luis Amatlán te espera con un Tepeztate."];const mEN=["You\'re just starting. The agave has more patience than you.","You know something. But Tepeztate took 30 years. You can dedicate more time.","Good level. You can talk mezcal at a tasting without embarrassing yourself.","Excellent. You\'re one of those who truly respect mezcal.","Honorary Maestro Mezcalero. San Luis Amatlán awaits you with a Tepeztate."];const m=isEN?mEN:mES;document.getElementById('qwm').textContent=m[Math.floor((sc/QS.length)*(m.length-.01))]}else ldQ()}
 function rstQ(){cQ=0;sc=0;['qq','qo','qf','qn'].forEach(id=>document.getElementById(id).style.display='');document.getElementById('qr').style.display='none';ldQ()}
 
 
