@@ -19,9 +19,9 @@ html{scroll-behavior:smooth}
 body{background:#040301;color:var(--bone);font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;line-height:1.8;overflow-x:hidden}
 
 /* ── LANG ── */
-.en{display:none}
-body.lang-en .es{display:none}
-body.lang-en .en{display:block}
+.en{display:none!important}
+body.lang-en .es{display:none!important}
+body.lang-en .en{display:block!important}
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;transition:background 0.5s,padding 0.5s,border-color 0.5s}
@@ -206,7 +206,7 @@ footer{background:#080601;border-top:1px solid var(--earth);padding:4rem 5rem 2.
     <li><a href="#envios" onclick="cN()"><span class="es">Envíos</span><span class="en">Shipping</span></a></li>
     <li><a href="#contacto" onclick="cN()"><span class="es">Contacto</span><span class="en">Contact</span></a></li>
   </ul>
-  <div style="display:flex;align-items:center;gap:0.8rem">
+  <div style="display:flex;align-items:center;gap:0.8rem;position:relative;z-index:503">
     <a href="/" class="nav-icon" title="Inicio · Home" aria-label="Inicio">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c8922a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
         <path d="M3 12l9-9 9 9"/>
@@ -695,36 +695,37 @@ function toggleSound(){
 }
 
 // ── NAV ────────────────────────────────────────────────────────
-function tN() {
-  const nl = document.getElementById('nl');
-  const nav = document.getElementById('nav');
-  nl.classList.toggle('open');
-  nav.classList.toggle('menu-open', nl.classList.contains('open'));
-}
-function cN() {
-  document.getElementById('nl').classList.remove('open');
-  document.getElementById('nav').classList.remove('menu-open');
-}
-document.getElementById('nl').addEventListener('click', function(e) {
-  const a = e.target.closest('a');
-  if (a && a.getAttribute('href') && a.getAttribute('href').startsWith('#')) {
-    e.preventDefault();
-    this.classList.remove('open');
-    document.getElementById('nav').classList.remove('menu-open');
-    const id = a.getAttribute('href').slice(1);
-    setTimeout(() => {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({behavior:'smooth'});
-    }, 80);
-  }
-});
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('scrolled', scrollY > 60);
-  if (window.innerWidth <= 960) {
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>60);
+  if(window.innerWidth<=960){
     document.getElementById('nl').classList.remove('open');
     document.getElementById('nav').classList.remove('menu-open');
   }
-}, {passive:true});
+},{passive:true});
+function tN(){
+  const nl=document.getElementById('nl');
+  const nav=document.getElementById('nav');
+  nl.classList.toggle('open');
+  nav.classList.toggle('menu-open',nl.classList.contains('open'));
+}
+function cN(){
+  document.getElementById('nl').classList.remove('open');
+  document.getElementById('nav').classList.remove('menu-open');
+}
+document.getElementById('nl').addEventListener('click',function(e){
+  const a=e.target.closest('a');
+  if(!a){cN();return;}
+  if(a&&a.getAttribute('href')&&a.getAttribute('href').startsWith('#')){
+    e.preventDefault();
+    this.classList.remove('open');
+    document.getElementById('nav').classList.remove('menu-open');
+    const id=a.getAttribute('href').slice(1);
+    setTimeout(function(){
+      const el=document.getElementById(id);
+      if(el)el.scrollIntoView({behavior:'smooth'});
+    },80);
+  }
+});
 
 // ── LANG ───────────────────────────────────────────────────────
 function setL(l){
