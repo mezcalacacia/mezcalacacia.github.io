@@ -24,23 +24,21 @@ body.lang-en .es{display:none!important}
 body.lang-en .en{display:block!important}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;transition:background 0.5s,padding 0.5s,border-color 0.5s}
-nav.scrolled{background:rgba(4,3,1,0.97);backdrop-filter:blur(20px);padding:0.8rem 3rem;border-bottom:1px solid rgba(200,146,42,0.12)}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 3.5rem;transition:background 0.5s,padding 0.5s,border-color 0.5s}
+nav.scrolled{background:rgba(4,3,1,0.96);backdrop-filter:blur(20px);padding:0.9rem 3.5rem;border-bottom:1px solid rgba(200,146,42,0.12)}
 nav.menu-open{backdrop-filter:none!important;background:#040301!important}
 .logo{font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:var(--gold);letter-spacing:0.45em;text-decoration:none;transition:letter-spacing 0.4s}
-.logo:hover{letter-spacing:0.6em}
 .logo-icon{height:32px;width:auto;vertical-align:middle;margin-right:0.55rem;filter:sepia(1) saturate(2.2) hue-rotate(12deg) brightness(1.35);transition:filter 0.4s;position:relative;top:-2px}
 .logo:hover .logo-icon{filter:sepia(1) saturate(3) hue-rotate(12deg) brightness(1.6)}
-.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;list-style:none;flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;background:rgba(4,3,1,0.98);z-index:501}
-.nav-links.open{display:flex!important;z-index:502!important;background:#040301!important;backdrop-filter:blur(12px)!important}
-.nav-links a{font-family:'Cinzel',serif;font-size:1.1rem;font-weight:600;color:var(--mist);text-decoration:none;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s}
-.nav-links a:hover{color:var(--gold2)}
-.nav-icon{display:flex;align-items:center;cursor:pointer;opacity:0.75;transition:opacity 0.25s;color:var(--gold);text-decoration:none}
-.nav-icon:hover{opacity:1}
+.logo:hover{letter-spacing:0.6em}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{font-family:'Cinzel',serif;font-size:0.65rem;font-weight:600;color:var(--mist);text-decoration:none;letter-spacing:0.14em;text-transform:uppercase;transition:color 0.3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s}
+.nav-links a:hover{color:var(--gold2)}.nav-links a:hover::after{width:100%}
+.burger{display:none;flex-direction:column;gap:5px;z-index:501}
+.burger span{width:28px;height:1px;background:var(--gold);display:block;transition:0.3s}
 .lb{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.15em;background:transparent;border:none;color:#7a6a52;padding:0.45rem 0.9rem;transition:all 0.25s;cursor:pointer}
 .lb.on{background:#c8922a;color:#040301}
-.burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;z-index:501;background:none;border:none;padding:4px}
-.burger span{width:28px;height:1px;background:var(--gold);display:block;transition:0.3s}
 #sound-btn{position:fixed;bottom:2.5rem;left:2.5rem;z-index:490;background:rgba(4,3,1,0.85);border:1px solid rgba(200,146,42,0.3);color:#c8922a;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.12em;padding:0.4rem 0.85rem;transition:all 0.3s;border-radius:3px;backdrop-filter:blur(6px)}
 #sound-btn:hover{border-color:var(--gold2);color:var(--gold2);background:rgba(200,146,42,0.1)}
 #sound-btn.playing{border-color:var(--gold);color:var(--gold);background:rgba(200,146,42,0.12);box-shadow:0 0 10px rgba(200,146,42,0.25)}
@@ -164,6 +162,9 @@ footer{background:#080601;border-top:1px solid var(--earth);padding:4rem 5rem 2.
 /* ── MOBILE ── */
 @media(max-width:960px){
   nav{padding:0.9rem 1.5rem}
+  .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(4,3,1,0.98);flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;z-index:501}
+  .nav-links.open{display:flex!important;z-index:502!important;background:#040301!important;backdrop-filter:blur(12px)!important}
+  .nav-links a{font-size:1.1rem;letter-spacing:0.1em}
   .burger{display:flex!important}
   #sound-btn{bottom:1.5rem;left:1rem;font-size:0.52rem;padding:0.35rem 0.7rem}
   .lang{bottom:1.5rem;right:1rem}
@@ -206,8 +207,8 @@ footer{background:#080601;border-top:1px solid var(--earth);padding:4rem 5rem 2.
     <li><a href="#envios" onclick="cN()"><span class="es">Envíos</span><span class="en">Shipping</span></a></li>
     <li><a href="#contacto" onclick="cN()"><span class="es">Contacto</span><span class="en">Contact</span></a></li>
   </ul>
-  <div style="display:flex;align-items:center;gap:0.8rem;position:relative;z-index:503">
-    <a href="/" class="nav-icon" title="Inicio · Home" aria-label="Inicio">
+  <div style="display:flex;align-items:center;gap:0.8rem">
+    <a href="/" title="Inicio · Home" aria-label="Inicio" style="display:flex;align-items:center;color:#c8922a;text-decoration:none;opacity:0.75;transition:opacity 0.25s" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0.75'">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c8922a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
         <path d="M3 12l9-9 9 9"/>
         <path d="M5 10v9a1 1 0 001 1h4v-4h4v4h4a1 1 0 001-1v-9"/>
@@ -694,7 +695,7 @@ function toggleSound(){
   sPlaying=!sPlaying;
 }
 
-// ── NAV ────────────────────────────────────────────────────────
+// NAV
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('scrolled',scrollY>60);
   if(window.innerWidth<=960){
@@ -714,7 +715,6 @@ function cN(){
 }
 document.getElementById('nl').addEventListener('click',function(e){
   const a=e.target.closest('a');
-  if(!a){cN();return;}
   if(a&&a.getAttribute('href')&&a.getAttribute('href').startsWith('#')){
     e.preventDefault();
     this.classList.remove('open');
