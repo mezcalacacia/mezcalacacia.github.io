@@ -31,7 +31,7 @@ nav.menu-open{backdrop-filter:none!important;background:#040301!important}
 .logo-icon{height:32px;width:auto;vertical-align:middle;margin-right:0.55rem;filter:sepia(1) saturate(2.2) hue-rotate(12deg) brightness(1.35);transition:filter 0.4s;position:relative;top:-2px}
 .logo:hover .logo-icon{filter:sepia(1) saturate(3) hue-rotate(12deg) brightness(1.6)}
 .logo:hover{letter-spacing:0.6em}
-.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links{display:none;list-style:none}
 .nav-links a{font-family:'Cinzel',serif;font-size:0.65rem;font-weight:600;color:var(--mist);text-decoration:none;letter-spacing:0.14em;text-transform:uppercase;transition:color 0.3s;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s}
 .nav-links a:hover{color:var(--gold2)}.nav-links a:hover::after{width:100%}
@@ -162,8 +162,8 @@ footer{background:#080601;border-top:1px solid var(--earth);padding:4rem 5rem 2.
 /* ── MOBILE ── */
 @media(max-width:960px){
   nav{padding:0.9rem 1.5rem}
-  .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(4,3,1,0.98);flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;z-index:501}
-  .nav-links.open{display:flex!important;z-index:502!important;background:#040301!important;backdrop-filter:blur(12px)!important}
+  .nav-links{display:none!important;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(4,3,1,0.98);flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;z-index:501}
+  .nav-links.open{display:flex!important;z-index:502!important;background:rgba(4,3,1,0.98)!important;position:fixed!important;top:0!important;left:0!important;right:0!important;bottom:0!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;gap:2.5rem!important}
   .nav-links a{font-size:1.1rem;letter-spacing:0.1em}
   .burger{display:flex!important}
   #sound-btn{bottom:1.5rem;left:1rem;font-size:0.52rem;padding:0.35rem 0.7rem}
@@ -713,6 +713,13 @@ function cN(){
   document.getElementById('nl').classList.remove('open');
   document.getElementById('nav').classList.remove('menu-open');
 }
+// Close menu on scroll
+window.addEventListener('scroll',function(){cN();},{passive:true});
+// Close menu when clicking overlay background
+document.addEventListener('click',function(e){
+  var nl=document.getElementById('nl');
+  if(nl && nl.classList.contains('open') && e.target===nl){cN();}
+});
 document.getElementById('nl').addEventListener('click',function(e){
   const a=e.target.closest('a');
   if(a&&a.getAttribute('href')&&a.getAttribute('href').startsWith('#')){
