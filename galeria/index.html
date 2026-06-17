@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACACIA — Proceso Ancestral</title>
+<meta name="description" content="El proceso ancestral del mezcal ACACIA: jimado, horneado, molienda, fermentación y destilado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#040301;--deep:#0a0700;--dark:#130e05;--earth:#1e1508;--mud:#2a1e0a;
+  --gold:#c8922a;--gold2:#e8b84b;--amber:#f5d070;--bone:#f0e6d0;
+  --smoke:#7a6a52;--mist:#c0ae90;--ash:#4a3f2f;
+  --green:#3a5628;--green2:#587a3e;--white:#fdf8ee;
+}
+body{background:#040301;color:var(--bone);font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;line-height:1.85;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 3.5rem;background:rgba(4,3,1,0.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,146,42,0.12);transition:padding 0.3s}
+.logo{font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:var(--gold);letter-spacing:0.45em;text-decoration:none;transition:letter-spacing 0.4s;display:flex;align-items:center}
+.logo-icon{height:32px;width:auto;vertical-align:middle;margin-right:0.55rem;filter:sepia(1) saturate(2.2) hue-rotate(12deg) brightness(1.35);transition:filter 0.4s;position:relative;top:-2px}
+.logo:hover .logo-icon{filter:sepia(1) saturate(3) hue-rotate(12deg) brightness(1.6)}
+.logo:hover{letter-spacing:0.6em}
+.nav-right{display:flex;align-items:center;gap:0.8rem}
+.burger{display:none;flex-direction:column;gap:5px;z-index:501;cursor:pointer}
+.burger span{width:28px;height:1px;background:var(--gold);display:block;transition:0.3s}
+.nav-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#040301;flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;z-index:502;list-style:none}
+.nav-menu.open{display:flex!important}
+.nav-menu a{font-family:'Cinzel',serif;font-size:1.1rem;letter-spacing:0.1em;color:var(--mist);text-decoration:none;transition:color 0.3s}
+.nav-menu a:hover{color:var(--gold2)}
+
+/* LANG */
+.lang{position:fixed;bottom:2.5rem;right:2.5rem;z-index:600;display:flex;border:1px solid var(--earth);background:#080601}
+.lb{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.15em;background:transparent;border:none;color:#7a6a52;padding:0.45rem 0.9rem;transition:all 0.25s;cursor:pointer}
+.lb.on{background:#c8922a;color:#040301}
+
+/* LANG TOGGLE */
+body:not(.lang-en) .en{display:none!important}
+body.lang-en .es{display:none!important}
+
+/* PAGE HEADER */
+.page-header{padding:10rem 5rem 5rem;max-width:860px;margin:0 auto;text-align:center}
+.eyebrow{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.45em;color:#c8922a;text-transform:uppercase;margin-bottom:1.4rem;display:flex;align-items:center;justify-content:center;gap:1.2rem}
+.eyebrow::before,.eyebrow::after{content:'';height:1px;background:linear-gradient(to right,transparent,var(--gold));width:60px}
+.eyebrow::after{background:linear-gradient(to left,transparent,var(--gold))}
+h1{font-family:'Cinzel Decorative',serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:700;line-height:1.1;color:#fdf8ee;margin-bottom:1.5rem;letter-spacing:0.05em}
+.subtitle{font-size:1.15rem;font-style:italic;color:var(--mist);line-height:1.9;margin-bottom:2.5rem}
+.back-btn{display:inline-flex;align-items:center;gap:0.6rem;font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(200,146,42,0.35);padding:0.75rem 1.6rem;border-radius:3px;transition:all 0.3s}
+.back-btn:hover{border-color:var(--gold);background:rgba(200,146,42,0.06);color:var(--gold2)}
+.back-btn svg{transition:transform 0.3s}
+.back-btn:hover svg{transform:translateX(-4px)}
+
+/* GALLERY GRID */
+.gallery{padding:2rem 3rem 8rem;max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:5rem}
+
+/* PROCESS CARD */
+.pcard{background:#080601;border:1px solid rgba(200,146,42,0.1);overflow:hidden;transition:border-color 0.4s;position:relative}
+.pcard:hover{border-color:rgba(200,146,42,0.3)}
+.pcard-img{width:100%;height:340px;object-fit:cover;display:block;filter:brightness(0.9)}
+.pcard:hover .pcard-img{filter:brightness(1)}
+.pcard-body{padding:2.5rem 3rem 3rem}
+.step-num{font-family:'Cinzel Decorative',serif;font-size:4rem;font-weight:900;color:rgba(200,146,42,0.18);line-height:1;margin-bottom:0.5rem}
+.step-name{font-family:'Cinzel',serif;font-size:1.5rem;color:var(--gold2);margin-bottom:1.2rem;letter-spacing:0.05em}
+.step-desc{font-size:1.1rem;color:var(--mist);line-height:1.9;margin:0}
+.step-divider{width:60px;height:1px;background:linear-gradient(to right,var(--gold),transparent);margin-bottom:1.4rem}
+
+/* FOOTER */
+footer{background:#080601;border-top:1px solid var(--earth);padding:4rem 5rem 2.5rem;display:grid;grid-template-columns:1.2fr 2fr 1fr;gap:4rem}
+.fl{font-family:'Cinzel Decorative',serif;font-size:2rem;color:var(--gold);letter-spacing:0.2em;margin-bottom:0.8rem}
+.flinks{display:grid;grid-template-columns:repeat(3,1fr);gap:0.7rem 2rem}
+.flinks a{font-family:'Cinzel',serif;font-size:0.63rem;color:var(--smoke);text-decoration:none;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s}
+.flinks a:hover{color:var(--gold)}
+.flegal p{font-size:0.9rem;color:var(--ash);line-height:2;text-align:right}
+.fbot{grid-column:1/-1;border-top:1px solid var(--earth);padding-top:2rem;margin-top:1rem;display:flex;justify-content:space-between}
+.fbot p{font-size:0.9rem;color:var(--smoke)}
+
+/* MOBILE */
+@media(max-width:960px){
+  nav{padding:0.9rem 1.5rem}
+  .burger{display:flex!important}
+  .lang{bottom:1.5rem;right:1rem}
+  .page-header{padding:7rem 1.5rem 3rem}
+  h1{font-size:clamp(1.9rem,7vw,2.8rem)}
+  .gallery{padding:1rem 1.5rem 5rem;gap:3.5rem}
+  .pcard-img{height:240px}
+  .pcard-body{padding:1.8rem 1.5rem 2rem}
+  .step-num{font-size:3rem}
+  .step-name{font-size:1.25rem}
+  footer{grid-template-columns:1fr;gap:2rem;padding:3rem 1.5rem 2rem}
+  .flegal p{text-align:left}
+  .fbot{flex-direction:column;gap:0.8rem;text-align:center}
+  .flinks{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){
+  .pcard-img{height:200px}
+  .gallery{gap:2.5rem}
+  .flinks{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR (desktop only via CSS @media) -->
+
+<!-- LANG SWITCHER -->
+<div class="lang"><button class="lb on" onclick="setL('es')">ES</button><button class="lb" onclick="setL('en')">EN</button></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/" class="logo">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAoCAYAAABq13MpAAAMKklEQVR42tVZeXQT57W/34w0o5FkyZJ3W7YxtgFvsZ2aJW1aDCWsaaD0jfL62oQklISQ9NVN0iQ96clYbUkISSGEAIU0aRaHtqOENIQCJS8shUDL+gi2Exwb79iWZEm2pJnRbF//MKaOH8szgZ72niOdozOjb37fvb977++7A3A9DAOCfxfjeZ4cBsxxHPEvD3gkyPr6emrEJcTzLDmdm24AFkhggQQOruuGxhxWlmfJYrYYe5BH33bydwtbAx01XcHOHG1AWeu4P32jp9YD4AH9kizCGAEAIISGSHWNZhjrH7xurwYA8Pbx3y4aJMLviWoENJMCkf7IvJfQ5pfXrVtHx/4UvG3H3j9PEaJCntFgxGqU2HrHuPl7EEL6yM173V79WsCjsd7+5Pqv3e5Ku+k4pOXviyNxkqoDiILU3u/zfZMkqUyNkF820MRNn55rhq6+PkAKhtZjbe7okaiX4zlnSfE4ivXe40MepN9QerA8kMUNHA5n7JuKjIHD6eabV9BplasxlnuNYNiGRNioCZTQrn9+kjQjlxbDYKbpnmOnT/8RC8Y9C+ZVTxRlYQEGXPB5d6upsamp20wydVostPlA4ulB8AAei8evRg/E8ywRGn+OeMDtUVZtY2+Jgy1MaektOBZ6rT/UQ2kR+aSZIamYSJRGUbwvWUrcWujIOzg44IvPyy/ooV2FP9RI3c2YLYm6rgNJEmC1Mw5FlFcNiHon+zX2D8CDwev2yl/a0xzHER6P52IIV22769ZOf/MLlEmZmkSPW/vhu41Pp04rPGt32JOFkPQ8iW1vGqzSWUmWGuSYsjXeE6tLzqLpgBj7U2Zyim/OTdWv+uVYDmBj5PAnH5sxKOfGD1Zs93g80etKj5f5FVbVLt0uCep0SY6dj8ei+0mDuDqzMHOaE+U8wR/5/JsyEZ0di4kg9YrbcnJzmpkU8+PRgQjQ2NSthGFBSPUtZ9KY5YYIuX2WLfueU0LbsjRnGhlUBxfJoE7Eqn7Mbk3esubu172AAV1AhMcKGvE8T/TTR6eF9Z4lNGNsIvWE9340f33LhbJFbT366N0mjU490BT8tMnXtC0Sk5RMR7Kxu6HnP0qnlM+XjdH7YjEZDCrqzXHmbfKLvlqzw4yy7flvfLjn9Y9tyZZfFFiKfkok6CWKEd3uysyYiCTy7XITdU9TQg96oGqLMmZPY4xR3e6V6c1Kx4Dnji3C6Po8fB+BCHj4N8seD4ghzmqzmBnZuvfFpS/NenbXL9+hTcbFtiQrhLoGf+9ISJwgGcWbI+EYDHYFFnzi2/cuaaR7i+mqxc7kuC0pdbxL1mI3rZi76omh53MEGvGcMVcPHrMkC7yOEMLDOoPbP50s8adiN+vVAQF+bf+mwqgm3WkhGd/S6uVbAABe3bdxFjbhe/1+//EUZ+rOmCL8QZXVohQYP6m+l1+ZkGv+briL+F1P5+HTNGNx57vKYpPyDTBtfOpql33VjmviNMbDjevK/GJZlvR6hxrOxTXxxe+RiW3ImWXPWfr1R87tOv5WRmv0zFvRqFpsQcHnUGL7i8Zo6vai/Iyu0jzTioEI1KHBlPuzs8+q+/dn4BkzPOqXauOX1SHVQEA16MP04XmeBBaABVavra1Fw5XogjMwAMCWnZyroiROJVp7TusKJk7ufXD8pKqjk9Jd0XuwOucnWbaqwHXRHl9GvnK1HPJ4PDrGGF2kGwA09tXMRoRYYzY6vvd5i+iW5BY6P9c2GwhTjNTNHwgo973y9Kg4pFs8+o0ETQDAFVv1kIBCgEZQ6UTzwjpZsxRRZMbz1oT+71loW7KgWl+YkPzMu8P/uZ6ScbQD9KtFEyGEEQKMMUfwPEtijJGi56xIsqdpiaYiszxYWheJamdIXbi7zce90OZ7NwMhhIdTDWFgCYS8GsaAai+EccyoEYIFCxaYd+zYIRYUFEwFgFMtLS3xmpoaRlVV3el0ah7PF5NqtOcRQhjjv9q6+o8URUT/EgCxVNPFiIk2C5QheUdcxjvR8eObjVVVDyijI8rzLNnQUIyvAp4AAL28vLwiEAjEHA4H43A4QjNnzvTzPH9vX1/ffqPRSMyYMSNw8ODBov7+/nNTpkyxt7e3+9vb23svRAFfomphAICW3pVpRoPtAVGJGjTcotnNWfmyYv2rwZkTXNEefHpOTPL1Ak4KmgxOpGqDr07I9DSOXuQSps+dO5d2uVxw8ODBikAggDMyMnYdOXLEZbfbT4RCoSpZlmNdXV3no9FoODExMbWyslL1+XxlAHBJ0EN0AQTAIYSe6gOAn/8fTwU7nBtBZ9aYDBajrvsnClLbOEXFd7X71ywMi6/nDy2CL8vLnJwcUlGUtuLi4kNOp/MQQRA2hmHijzzyyIm8vLxjZWVle0mStMyePbtj5syZ/sLCwuaysrKzo3gPo4EjNFRleMySHAfEPswZMB7iPQIAaDr/agptaFqmoFilpuABOZbtZUwZpGY8tm4gos2cXLCpazhhrtRe/1lGAABMyFzqz0197hkdObaYLYYyKrHxmUHlUGEg6OsiUM9aAICmpp300O4BcZgj8BfHBugSn+H10RWuX3uZGgp/LQkA0Hi+7xaCEG5DoOa0tYt7sVbUn19mOYqlrv0kYV5dkPyrN0ZnO8/zJMuy+siGcSPtsjtuD4cdFPXS1mgQv/bZqdsO59+88YxOgq3Pn/KVhjYjnS6mnXG7HxVHJhOHOcJzgYte8BJu5NYBAHMcRzSWNKKRB+PrCprnWbKYBbIEiqE9LNUmJqCf1rcJH5z6zAdRQ/u3jMK4Go1KW2mxGlvGmTO+vWDyj1s3/2XD12N98fpH3Y8GMWCEYITHh4T9P35zQFxuxHCJUQO+Ju3RFfpZ5ZHW3ic+a5ESmjrOIEUVPkpPrSpOyFLvC7dK71Xmf/uXoil0QpH1riQ6aXG7v82dlp462aiQry35n+V1yIP0TXvXPxsWQk6GoN6qmf/kIQBAHMchqN5P1FYf0IZLKoc5osTbiNxXiQa68o5ZEqGhBX69+6kNVqvzf8Od3eeEoOg/FD35phIXi77i+sZ3Lekp79BWE7JqzJmAGGmyptLfiQ/KIMWkAz8r98x7eM+D+wQyOlWMSuCkE1dvWPbKkyO9yPIsybNefRj88+//IM9uSoP756xsvSZP79vHGfwpQHR3SOtURl3e3dEdBh0+pGTDoZbg2RoprDz/jeo7K1uCZ5cJEVFzUM6n/NG+H6pIyTIwNFjB6m042ujNnJjKdwZ64g67nS5Kn8ROmcDMjKN4R6E2a8Otty6KAACs/WBpNTbAQjkep6x05saH5j7XeKlpFBoD9/GDm+/8qiAPLqVNxukkJn0pkPR2aDCoVziy3tkVPLdGYfTvR/pim5KYtDUGi75dBbXI7DCD4JfWtDa3JdmyrUscDjtgidrhvmXCRz6leW1P2/lTatz4rNWWcouJMismE/3+j+a+cvhKYMixCP0XHtvQcXpX8/bxpvmvhJlOIYK1SRXlX01AdvvsCldR42AwSElCrNSGDX/sPNixnnbazhkIQypNGxdXjiv9lhGZ/AnmhGmSKBCR+o4airGBgAcWSzJOSLYnc48vesu7u+5k54U2Thw4cODaEvELRyuOpXzg0we6A0uS8hy/AaMB8jNyoTivBCjSALqKY1ZkWq/4+t8MKkIFTTGOvqBvckgaKM0wJT6d4bC29IciJarZMNuS4CQ1JfCBRLTyNLItffyOrVvX7ZxLB/82VbmawhzTANLr8cqAAc3974I6PUYoURy/C5KIXCkqRuIE0YgU9OEb7/8epWTZV5eXls7QsGAhXUaw9Ds/nVz18N76Jr7InOtYhBCeh0kTknrqP+kLtVCKnHJsSBLvVjye3fo1N5f/r9XjeqoUlaoAoKfPSV+eVZG+SdYUcCWnQ4ErH2MMe5AGD4GO05LSnH9maJPVxJjAqDMHBns+Xhj2ByeseuijYzd01PuFUW2DF5eiUhk4IPgSnnxx74sN8Uj8WU2WSY2CltyUCScem/PYCQCAezf811YkE9ZMJgustE2gdOYnK9zeAQA4dimJekM9fbUHsjxLFjcU46Cr5z4qgVqenZrbkG3LXvedqv88yWGOgFoPeK7SIW/saZwDYjpMv3jurK6t1j2XkbKjB5z/yu9oEMuzJIf/DV4qXW/7O7Kq4yW6vVMVAAAAAElFTkSuQmCC" class="logo-icon" alt="ACACIA logo">ACACIA
+  </a>
+  <div class="nav-right">
+    <a href="/tienda/" title="Tienda · Store" aria-label="Tienda" style="display:flex;align-items:center;color:#c8922a;text-decoration:none;opacity:0.75;transition:opacity 0.25s" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0.75'">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c8922a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l1.5-5h15L21 9H3z"/>
+        <path d="M3 9v11h18V9"/>
+        <path d="M9 20v-5h6v5"/>
+        <line x1="7" y1="4" x2="6" y2="9"/><line x1="12" y1="4" x2="12" y2="9"/><line x1="17" y1="4" x2="18" y2="9"/>
+      </svg>
+    </a>
+    <div class="burger" onclick="tN()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU OVERLAY -->
+<ul class="nav-menu" id="nl">
+  <li><a href="/" onclick="cN()"><span class="es">Inicio</span><span class="en">Home</span></a></li>
+  <li><a href="/#historia" onclick="cN()"><span class="es">Historia</span><span class="en">History</span></a></li>
+  <li><a href="/#magueyes" onclick="cN()"><span class="es">Magueyes</span><span class="en">Agaves</span></a></li>
+  <li><a href="/#procesos" onclick="cN()"><span class="es">Procesos</span><span class="en">Process</span></a></li>
+  <li><a href="/#sabores" onclick="cN()"><span class="es">Sabores</span><span class="en">Flavors</span></a></li>
+  <li><a href="/#ritual" onclick="cN()">Ritual</a></li>
+  <li><a href="/#especiales" onclick="cN()"><span class="es">Especiales</span><span class="en">Specials</span></a></li>
+  <li><a href="/#quiz" onclick="cN()">Quiz</a></li>
+  <li><a href="/galeria/" onclick="cN()" style="color:var(--gold)"><span class="es">Galería</span><span class="en">Gallery</span></a></li>
+  <li><a href="/#contacto" onclick="cN()"><span class="es">Contacto</span><span class="en">Contact</span></a></li>
+</ul>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="eyebrow"><span class="es">ACACIA</span><span class="en">ACACIA</span></div>
+  <h1 class="es">Proceso Ancestral</h1>
+  <h1 class="en">Ancestral Process</h1>
+  <p class="subtitle es">Así nace el mezcal ACACIA —<br>paso a paso, como hace siglos.</p>
+  <p class="subtitle en">This is how ACACIA mezcal is born —<br>step by step, as it has for centuries.</p>
+  <a href="/" class="back-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span class="es">Volver al inicio</span>
+    <span class="en">Back to home</span>
+  </a>
+</header>
+
+<!-- GALLERY -->
+<main class="gallery">
+
+  <!-- 01 JIMADO -->
+  <article class="pcard">
+    <img src="img/1.proceso de jimando.png" alt="Jimado" class="pcard-img" loading="lazy">
+    <div class="pcard-body">
+      <div class="step-num">01</div>
+      <div class="step-divider"></div>
+      <div class="step-name es">Jimado</div>
+      <div class="step-name en">Jimado (Harvesting)</div>
+      <p class="step-desc es">El maestro mezcalero selecciona el maguey maduro y lo corta a ras del suelo. Solo el corazón — la piña — continúa al siguiente paso.</p>
+      <p class="step-desc en">The maestro mezcalero selects the mature agave and cuts it at ground level. Only the heart — the piña — continues to the next step.</p>
+    </div>
+  </article>
+
+  <!-- 02 HORNEADO -->
+  <article class="pcard">
+    <img src="img/2.proceso de horneado.png" alt="Horneado" class="pcard-img" loading="lazy">
+    <div class="pcard-body">
+      <div class="step-num">02</div>
+      <div class="step-divider"></div>
+      <div class="step-name es">Horneado</div>
+      <div class="step-name en">Roasting</div>
+      <p class="step-desc es">Las piñas se cuecen en un horno cónico de tierra durante 3 a 5 días con leña de encino. El humo y la tierra definen el carácter ahumado del mezcal.</p>
+      <p class="step-desc en">The piñas are cooked in a conical earthen pit for 3 to 5 days with oak firewood. Smoke and earth define the smoky character of mezcal.</p>
+    </div>
+  </article>
+
+  <!-- 03 MOLIENDA -->
+  <article class="pcard">
+    <img src="img/3.proceso de molienda.png" alt="Molienda" class="pcard-img" loading="lazy">
+    <div class="pcard-body">
+      <div class="step-num">03</div>
+      <div class="step-divider"></div>
+      <div class="step-name es">Molienda</div>
+      <div class="step-name en">Milling</div>
+      <p class="step-desc es">Las piñas cocidas se trituran con un tahona — piedra de río circular jalada por caballo — para extraer los jugos y fibras del maguey.</p>
+      <p class="step-desc en">The cooked piñas are crushed with a tahona — a circular river stone pulled by horse — to extract the juices and fibers of the agave.</p>
+    </div>
+  </article>
+
+  <!-- 04 FERMENTACIÓN -->
+  <article class="pcard">
+    <img src="img/4.proceso de fermentacion.png" alt="Fermentación" class="pcard-img" loading="lazy">
+    <div class="pcard-body">
+      <div class="step-num">04</div>
+      <div class="step-divider"></div>
+      <div class="step-name es">Fermentación</div>
+      <div class="step-name en">Fermentation</div>
+      <p class="step-desc es">Los jugos y fibras reposan en tinas de madera de 5 a 30 días. Las levaduras silvestres del aire de la sierra convierten los azúcares en alcohol.</p>
+      <p class="step-desc en">The juices and fibers rest in wooden vats for 5 to 30 days. Wild yeasts from the mountain air convert the sugars into alcohol.</p>
+    </div>
+  </article>
+
+  <!-- 05 DESTILADO -->
+  <article class="pcard">
+    <img src="img/5.proceso de destilado.png" alt="Destilado" class="pcard-img" loading="lazy">
+    <div class="pcard-body">
+      <div class="step-num">05</div>
+      <div class="step-divider"></div>
+      <div class="step-name es">Destilado</div>
+      <div class="step-name en">Distillation</div>
+      <p class="step-desc es">El tepache fermentado se destila dos veces en alambiques de cobre o barro. La segunda destilación produce el mezcal final entre 40° y 55° de alcohol.</p>
+      <p class="step-desc en">The fermented tepache is distilled twice in copper or clay stills. The second distillation produces the final mezcal between 40° and 55° alcohol.</p>
+    </div>
+  </article>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="fl">ACACIA</div>
+    <p style="font-size:0.95rem;color:var(--smoke)" class="es">Mezcal Artesanal<br>San Luis Amatlán<br>Oaxaca, México</p>
+    <p style="font-size:0.95rem;color:var(--smoke)" class="en">Artisanal Mezcal<br>San Luis Amatlán<br>Oaxaca, Mexico</p>
+  </div>
+  <div class="flinks">
+    <a href="/"><span class="es">Inicio</span><span class="en">Home</span></a>
+    <a href="/#historia"><span class="es">Historia</span><span class="en">History</span></a>
+    <a href="/#magueyes"><span class="es">Magueyes</span><span class="en">Agaves</span></a>
+    <a href="/#procesos"><span class="es">Procesos</span><span class="en">Process</span></a>
+    <a href="/#sabores"><span class="es">Sabores</span><span class="en">Flavors</span></a>
+    <a href="/#ritual">Ritual</a>
+    <a href="/#especiales"><span class="es">Especiales</span><span class="en">Specials</span></a>
+    <a href="/#quiz">Quiz</a>
+    <a href="/galeria/"><span class="es">Galería</span><span class="en">Gallery</span></a>
+    <a href="/#contacto"><span class="es">Contacto</span><span class="en">Contact</span></a>
+  </div>
+  <div class="flegal">
+    <p class="es">El abuso en el consumo<br>de este producto es<br>nocivo para la salud.<br><br>© 2025 ACACIA MEZCAL<br>Hecho en Oaxaca 🌿</p>
+    <p class="en">Excessive consumption<br>is harmful to health.<br><br>© 2025 ACACIA MEZCAL<br>Made in Oaxaca 🌿</p>
+  </div>
+  <div class="fbot">
+    <p class="es">El mezcal no se toma — se celebra.</p>
+    <p class="en">Mezcal isn't drunk — it's celebrated.</p>
+    <p style="color:var(--ash);font-size:0.8rem">San Luis Amatlán · Oaxaca</p>
+  </div>
+</footer>
+
+<script>
+// NAV TOGGLE
+function tN(){
+  const nl=document.getElementById('nl');
+  nl.classList.toggle('open');
+}
+function cN(){
+  document.getElementById('nl').classList.remove('open');
+}
+
+// LANG
+function setL(l){
+  document.querySelectorAll('.es,.en').forEach(function(el){el.style.display='';});
+  document.body.className=(l==='en')?'lang-en':'';
+  document.querySelectorAll('.lb').forEach(function(b,i){
+    b.classList.toggle('on',(i===0&&l==='es')||(i===1&&l==='en'));
+  });
+}
+</script>
+</body>
+</html>
